@@ -11,7 +11,9 @@ public class BoardDAOImpl implements BoardDAO{
 	@Inject
 	SqlSession sqlSession;
 	
+	@Override
 	public List<BoardVo> boardList() throws Exception{
 		return sqlSession.selectList("board.boardList");
 	}
+	
 }

@@ -32,4 +32,10 @@ public class BoardController{
 		model.addAttribute("list",list);
 		return "/board/boardList";
 	}
+
+	@RequestMapping("/boardWrite")
+	public String boardWrite(Model model)throws Exception {
+		return "/board/boardWrite";
+	}
+	
 }

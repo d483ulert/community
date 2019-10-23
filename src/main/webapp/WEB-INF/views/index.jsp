@@ -61,7 +61,7 @@
 		<ul class="nav navbar-nav">
 			<li class="liright"><a href="${cp}/member/modifyForm">정보수정</a></li>
 			<li class="liright"><a href="${cp}/member/logout">로그아웃</a></li>
-			<li class="liright"><a href="${cp}/member/removeForm">회원탈퇴</a></li>	
+			<li class="liright"><a href="${cp}/member/removeForm">회원탈퇴</a></li>
 			<li class="liright"><a href="${cp}/board/boardList">자유게시판</a></li>
 		</ul>
 	</div>

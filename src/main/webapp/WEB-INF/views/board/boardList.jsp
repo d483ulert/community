@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>게시판</title>
 <link rel="stylesheet" type="text/css" href="${cp}/resources/css/normal.css" />
 <script src="${cp}/resources/js/js.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
