@@ -48,6 +48,6 @@
         </tr>
         </c:forEach>
     </table>
-
+	<a href="${cp}/board/boardWrite">글쓰기</a>
 </body>
 </html>

@@ -9,6 +9,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select bno,title,writer,regdate,viewcnt
 			from board order by bno desc
 	</select>
+	
+	<insert id="boardWriter">
+		insert into board(bno,title,content,writer)
+		values((select nv1(max(bno)+1,1)from board),#{title},#{content},#{writer})
+	</insert>
+
 
 </mapper>
 
