@@ -10,5 +10,7 @@ public class BoardVo {
 	private String writer;
 	private Date regdate;
 	private int viewcnt;
-	
+
+    public BoardVo() {}
+
 }
