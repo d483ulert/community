@@ -29,25 +29,27 @@
 </nav>
 	<table border="1">
         <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>글쓴이</th>
-            <th>작성일자</th>
-            <th>조회수</th>
+        	<th>>${data.bno}</th>
+            <th>내용</th>
         </tr>
-        <c:forEach var="row" items="${list}">
         <tr>
-            <td>${row.bno}</td>
-            <td><a href="${cp}/board/read.do.do?bno=${row.bno}">${row.title}</a></td>
-            <td>${row.writer}</td>
-            <td>
-              <!-- 데이터 타입을 사용하는 방법 -->
-             	<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss" />
-            </td>
-            <td>${row.viewcnt}</td>
+        	<td>작성일자</td>
+        	<td><fmt:formatDate value="${data.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
         </tr>
-        </c:forEach>
+        <tr>
+        	<td>글제목</td><td>${data.title}</td>
+        </tr>
+         <tr>
+        	<td>글내용</td><td>${data.content}</td>
+        </tr>
+         <tr>
+        	<td>글쓴이</td><td>${data.writer}</td>
+        </tr>
+         <tr>
+        	<td>조회수</td><td>${data.viewcnt}</td>
+        </tr>
     </table>
-	<a href="${cp}/board/boardWrite">글쓰기</a>
+	<a href="#">수정</a>
+	<a href="#">삭제</a>
 </body>
 </html>
