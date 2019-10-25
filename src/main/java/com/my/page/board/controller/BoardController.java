@@ -42,7 +42,7 @@ public class BoardController{
     @RequestMapping(value="boardWrite", method=RequestMethod.POST)
 	public String boardWriter(BoardVo bdto) throws Exception{
 		boardService.writerBoard(bdto);
-		return "redirect:boardList";
+		return "redirect:/board/boardList";
 		
 	}
 }
