@@ -30,7 +30,7 @@
 	</div>
 </nav>
 
- <form name="bdto" method="post" action="${path}/board/insert.do">
+ <form name="bdto" method="post" action="${cp}/board/boardWrite">
  	<div>제목 <input name="title" id="title" size="100" placeholder="제목"></div>
  	<div>내용 <textarea name="content" id="content" rows="10" cols="150" placeholder="내용"></textarea></div>
  	<div>이름 <input name="writer" id="writer" placeholder="이름입력"></div>
