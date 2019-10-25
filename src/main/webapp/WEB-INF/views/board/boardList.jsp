@@ -38,7 +38,7 @@
         <c:forEach var="row" items="${list}">
         <tr>
             <td>${row.bno}</td>
-            <td><a href="${cp}/board/read.do.do?bno=${row.bno}">${row.title}</a></td>
+            <td><a href="${cp}/board/boardRead?bno=${row.bno}">${row.title}</a></td>
             <td>${row.writer}</td>
             <td>
               <!-- 데이터 타입을 사용하는 방법 -->
