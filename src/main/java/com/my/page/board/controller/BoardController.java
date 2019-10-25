@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.my.page.board.BoardDAO;
@@ -37,5 +38,11 @@ public class BoardController{
 	public String boardWrite(Model model)throws Exception {
 		return "/board/boardWrite";
 	}
-	
+
+    @RequestMapping(value="insert.do", method=RequestMethod.POST)
+	public String boardWriter(BoardVo bdto) throws Exception{
+		boardService.writerBoard(bdto);
+		return "redirect:boardList";
+		
+	}
 }

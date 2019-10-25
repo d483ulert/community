@@ -6,4 +6,6 @@ import com.my.page.board.BoardVo;
 public interface BoardService {
 
 	public List<BoardVo> boardList() throws Exception;
+	
+	public void writerBoard(BoardVo bdto) throws Exception;
 }
