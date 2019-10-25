@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.my.page.board.BoardDAO;
@@ -43,6 +44,14 @@ public class BoardController{
 	public String boardWriter(BoardVo bdto) throws Exception{
 		boardService.writerBoard(bdto);
 		return "redirect:/board/boardList";
-		
 	}
+    
+    @RequestMapping(value="boardRead", method=RequestMethod.GET)
+    public String boardRead(@RequestParam int bno, Model model) throws Exception{
+    	BoardVo data = boardService.boardRead(bno);
+    	model.addAttribute("data",data);
+    	return"/board/boardRead";
+    	
+    }
+    
 }

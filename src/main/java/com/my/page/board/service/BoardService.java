@@ -7,5 +7,9 @@ public interface BoardService {
 
 	public List<BoardVo> boardList() throws Exception;
 	
+	//C
 	public void writerBoard(BoardVo bdto) throws Exception;
+	
+	//R
+	public BoardVo boardRead(int bno) throws Exception;
 }
