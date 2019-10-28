@@ -29,6 +29,7 @@
 		</ul>
 	</div>
 </nav>
+<div class="container">
 	<form name ="updateform" method="POST" action="${cp}/board/boardUpdate">
 		<div>글번호</div>
 		<div><input name="bno" value="${data.bno}" type="text" readonly="readonly"></div>
@@ -43,12 +44,12 @@
         <div>작성일자</div>
         <div><fmt:formatDate value="${data.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
         
-		<div>
-			<input type="submit" value="글수정"/>
-			<input type="reset" value="리셋"/>
+        <div style="text-align:center;">
+		<button type="submit" class="btn btn-Light" >수정</button>
+		<button type="reset"  class="btn btn-Light">리셋</button>
 		</div>
 	</form>
-
+</div>
 
 </body>
 </html>
