@@ -51,9 +51,9 @@
         </tr>
     </table>
    </div>
-	<div style="text-align:right">
-		<a href="${cp}/board/updatepage?bno=${data.bno}">수정</a>
-		<a href="${cp}/board/delete?bno=${data.bno}">삭제</a>
+	<div style="text-align:center;">
+		<button class="btn btn-Light" onclick="location.href='${cp}/board/updatepage?bno=${data.bno}';">수정</button>
+		<button class="btn btn-Light" onclick="location.href='${cp}/board/delete?bno=${data.bno};">삭제</button>
 	</div>
 </body>
 </html>
