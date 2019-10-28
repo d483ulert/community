@@ -12,4 +12,7 @@ public interface BoardService {
 	
 	//R
 	public BoardVo boardRead(int bno) throws Exception;
+	
+	//U
+	public updateBoard(BoardVo bdto) throws Exception;
 }

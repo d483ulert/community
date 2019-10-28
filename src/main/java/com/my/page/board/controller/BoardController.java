@@ -50,8 +50,19 @@ public class BoardController{
     public String boardRead(@RequestParam int bno, Model model) throws Exception{
     	BoardVo data = boardService.boardRead(bno);
     	model.addAttribute("data",data);
-    	return"/board/boardRead";
+    	return"/board/boardRead";	
+    }
+    @RequestMapping(value="updatepage", method=RequestMethod.GET)
+    public String boardUpdate(@RequestParam int bno, Model model) throws Exception{
+    	BoardVo data = boardService.boardRead(bno);
+    	model.addAttribute("data",data);
+    	return "/board/boardUpdate";
     	
     }
     
+    @RequestMapping(value="update.do", method=RequestMethod.POST)
+    public String boardUpdatedo(BoardVo bdto) throws Exception {
+    	boardService.updateBoard(bdto);
+    	return "redirect:/board/boardList"; 
+    }
 }

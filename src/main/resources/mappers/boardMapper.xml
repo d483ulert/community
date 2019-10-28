@@ -19,6 +19,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    			select bno,title,content,regdate,viewcnt
    			from board where bno = #{bno}
    	</select>
+   	
+   	
+   	<update id="boardUpdate">
+   			update board set title=#{title},content=#{content}
+   			where bno =#{bno}
+   	</update>
 
 
 </mapper>
