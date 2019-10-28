@@ -49,7 +49,7 @@
         	<td>조회수</td><td>${data.viewcnt}</td>
         </tr>
     </table>
-	<a href="#">수정</a>
-	<a href="#">삭제</a>
+	<a href="${cp}/board/updatepage?bno=${data.bno}">수정</a>
+	<a href="${cp}/board/delete?bno=${data.bno}">삭제</a>
 </body>
 </html>

@@ -52,6 +52,7 @@ public class BoardController{
     	model.addAttribute("data",data);
     	return"/board/boardRead";	
     }
+    
     @RequestMapping(value="updatepage", method=RequestMethod.GET)
     public String boardUpdate(@RequestParam int bno, Model model) throws Exception{
     	BoardVo data = boardService.boardRead(bno);
