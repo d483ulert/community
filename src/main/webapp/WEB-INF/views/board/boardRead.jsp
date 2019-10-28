@@ -27,7 +27,8 @@
 		</ul>
 	</div>
 </nav>
-	<table border="1">
+<div class="container">
+	<table class="table table-hover">
         <tr>
         	<th>>${data.bno}</th>
             <th>내용</th>
@@ -49,7 +50,10 @@
         	<td>조회수</td><td>${data.viewcnt}</td>
         </tr>
     </table>
-	<a href="${cp}/board/updatepage?bno=${data.bno}">수정</a>
-	<a href="${cp}/board/delete?bno=${data.bno}">삭제</a>
+   </div>
+	<div style="text-align:right">
+		<a href="${cp}/board/updatepage?bno=${data.bno}">수정</a>
+		<a href="${cp}/board/delete?bno=${data.bno}">삭제</a>
+	</div>
 </body>
 </html>

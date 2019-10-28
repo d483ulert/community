@@ -27,7 +27,8 @@
 		</ul>
 	</div>
 </nav>
-	<table border="1">
+<div class="container">
+	<table class="table table-hover" >
         <tr>
             <th>번호</th>
             <th>제목</th>
@@ -48,6 +49,9 @@
         </tr>
         </c:forEach>
     </table>
-	<a href="${cp}/board/boardWrite">글쓰기</a>
+   </div>
+    <div style="text-align:center;">
+		<button class="btn btn-Light" onclick="location.href='${cp}/board/boardWrite';">글쓰기</button>
+	</div>
 </body>
 </html>
