@@ -27,10 +27,10 @@
 </nav>
 
 <br><br>
-	<h1 style="text-align:center">회원가입</h1>
+	<h1 style="text-align:center;">회원가입</h1>
 	
 	<form:form action="${cp}/member/join" method="post" commandName="member">
-		<table class="table table-striped" style="text-align:center border:1px solid">
+		<table class="table table-bordered" style="text-align:center border:1px solid">
 			<tr>
 				<td style="text-align:center" >아이디</td>
 				<td ><form:input path="memId" /></td>
@@ -43,17 +43,13 @@
 				<td style="text-align:center">이메일</td>
 				<td><form:input path="memMail" /></td>
 			</tr>
-			<tr>
-				<td colspan="2" style="text-align:right">
-					<input type="submit" value="Join" >
-					<input type="reset" value="Cancel" >
-				</td>
-			</tr>
+
 		</table>
+		<div style="text-align:center;">				
+			<button class="btn" type="submit">로그인</button>
+			<button class="btn" type="reset">취소</button>
+		</div>
 </form:form>
 
-	<div style="text-align:center;">
-		<a href="${cp}/">메인화면으로</a>
-	</div>
 </body>
 </html>

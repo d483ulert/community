@@ -26,12 +26,12 @@
 	</div>
 </nav>
 
-
-	<h1>회원정보 수정</h1>
-	
+	<div style="text-align:center;">
+		<h1>회원정보 수정</h1>
+	</div>
 	<form:form action="${cp}/member/modify" method="post" commandName="member">
 	  <form:hidden path="memId" value="${member.memId}"/>
-		<table class="table table-striped" style="text-align:center border:1px solid">
+		<table class="table table-bordered" style="text-align:center border:1px solid">
 			<tr>
 				<td style="text-align:center">아이디</td>
 				<td>${member.memId}</td>
@@ -44,15 +44,13 @@
 				<td style="text-align:center">이메일</td>
 				<td><form:input path="memMail" value="${member.memMail}" /></td>
 			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="Modify" ></td>
-			</tr>
 		</table>
+		<div style="text-align:center;">		
+			<button class="btn btn-light" type="submit">수정</button>
+		</div>
 	</form:form>
 	
-	<div style="text-align:center;">
-		<a href="${cp}/">메인화면으로</a>
-	</div>
+
 	
 </body>
 </html>

@@ -29,7 +29,7 @@
 	<h1 style="text-align:center">로그인</h1>
 	
 	<form:form action="${cp}/member/login" method="post" commandName="member">
-		<table class="table table-striped" style="text-align:center border:1px solid">
+		<table class="table table-bordered" style="text-align:center border:1px solid">
 			<tr>
 				<td style="text-align:center">아이디</td>
 				<td><form:input path="memId" /></td>
@@ -38,15 +38,12 @@
 				<td style="text-align:center">비밀번호</td>
 				<td><form:password path="memPw" /></td>
 			</tr>
-			<tr>
-				<td colspan="2" style="text-align:right">
-				<input type="submit" value="Login" ></td>
-			</tr>
+			
 		</table>
+		<div style="text-align:center;">		
+			<button class="btn btn-light" type="submit">로그인</button>
+		</div>
 	</form:form>
 	
-	<div style="text-align:center;">
-		<a href="${cp}/">메인화면으로</a>
-	</div>
 </body>
 </html>
