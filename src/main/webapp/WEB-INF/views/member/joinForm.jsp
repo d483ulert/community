@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Insert title here</title>
+<title>로그인해주세요</title>
 <link rel="stylesheet" type="text/css" href="${cp}/resources/css/normal.css" />
 </head>
 <body>
@@ -30,7 +30,7 @@
 	<h1 style="text-align:center">회원가입</h1>
 	
 	<form:form action="${cp}/member/join" method="post" commandName="member">
-		<table class="table" style="text-align:center border:1px solid">
+		<table class="table table-striped" style="text-align:center border:1px solid">
 			<tr>
 				<td style="text-align:center" >아이디</td>
 				<td ><form:input path="memId" /></td>
@@ -52,7 +52,7 @@
 		</table>
 </form:form>
 
-	<div class="center1">
+	<div style="text-align:center;">
 		<a href="${cp}/">메인화면으로</a>
 	</div>
 </body>

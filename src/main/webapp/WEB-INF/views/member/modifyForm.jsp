@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="${cp}/resources/css/normal.css" />
 
-<title>Insert title here</title>
+<title>정보수정</title>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -31,7 +31,7 @@
 	
 	<form:form action="${cp}/member/modify" method="post" commandName="member">
 	  <form:hidden path="memId" value="${member.memId}"/>
-		<table class="table" style="text-align:center border:1px solid">
+		<table class="table table-striped" style="text-align:center border:1px solid">
 			<tr>
 				<td style="text-align:center">아이디</td>
 				<td>${member.memId}</td>
@@ -50,7 +50,7 @@
 		</table>
 	</form:form>
 	
-	<div class="center1">
+	<div style="text-align:center;">
 		<a href="${cp}/">메인화면으로</a>
 	</div>
 	

@@ -32,7 +32,7 @@
 	
 	<form:form action="${cp}/member/remove" method="post" commandName="member">
 		<input type="hidden" name="memId" value="${member.memId}">
-		<table class="table" style="text-align:center border: 1px solid">
+		<table class="table table-striped" style="text-align:center border: 1px solid">
 			<tr>
 				<td style="text-align:center">아이디</td>
 				<td>${member.memId}</td>
@@ -47,7 +47,7 @@
 		</table>
 	</form:form>
 	
-	<div class="center1">
+	<div style="text-align:center;">
 		<a href="${cp}/">메인화면으로</a>
 	</div>
 </body>
