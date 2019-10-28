@@ -29,4 +29,10 @@ public class BoardDAOImpl implements BoardDAO{
     public void boardUpdate(BoardVo bdto) throws Exception {
 		sqlSession.update("board.boardUpdate",bdto);
 	}
+	
+	@Override
+	public void boardDelete(int bno) throws Exception{
+		sqlSession.delete("board.boardDelete",bno);
+	}
+	
 }

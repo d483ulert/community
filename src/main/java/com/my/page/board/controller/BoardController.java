@@ -61,9 +61,15 @@ public class BoardController{
     	
     }
     
-    @RequestMapping(value="update.do", method=RequestMethod.POST)
+    @RequestMapping(value="boardUpdate", method=RequestMethod.POST)
     public String boardUpdatedo(BoardVo bdto) throws Exception {
     	boardService.updateBoard(bdto);
     	return "redirect:/board/boardList"; 
     }
+    @RequestMapping(value="delete",method=RequestMethod.GET)
+    public String boardDelete(@RequestParam int bno) throws Exception{
+    	boardService.deleteBoard(bno);
+    	return "redirect:/board/boardList"; 
+    }
+   
 }

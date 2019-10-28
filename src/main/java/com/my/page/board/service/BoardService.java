@@ -15,4 +15,7 @@ public interface BoardService {
 	
 	//U
 	public void updateBoard(BoardVo bdto) throws Exception;
+	
+	//D
+	public void deleteBoard(int bno) throws Exception;
 }

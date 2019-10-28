@@ -6,7 +6,7 @@ public interface BoardDAO {
 	//List
 	public List<BoardVo> boardList() throws Exception;
 	
-	// C
+	//C
 	public void writerBoard(BoardVo bdto) throws Exception;
 	
 	//R
@@ -14,6 +14,8 @@ public interface BoardDAO {
 	
 	//U
 	public void boardUpdate(BoardVo bdto) throws Exception;
-
-
+	
+	//D
+	public void boardDelete(int bno) throws Exception;
+	
 }
