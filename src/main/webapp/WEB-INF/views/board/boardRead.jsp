@@ -53,7 +53,9 @@
    </div>
 	<div style="text-align:center;">
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/updatepage?bno=${data.bno}';">수정</button>
-		<button class="btn btn-Light" onclick="location.href='${cp}/board/delete?bno=${data.bno};">삭제</button>
+		<button class="btn btn-Light" onclick="location.href='${cp}/board/delete?bno=${data.bno}';">삭제</button>
+		<button class="btn btn-Light" onclick="location.href='${cp}/board/boardList';">글목록</button>
+	
 	</div>
 </body>
 </html>
