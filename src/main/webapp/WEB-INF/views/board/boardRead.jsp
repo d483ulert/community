@@ -30,24 +30,14 @@
 <div class="container">
 	<table class="table table-hover">
         <tr>
-        	<th>>${data.bno}</th>
-            <th>내용</th>
+        	<th>번호:${data.bno}</th>
+            <th>${data.title}</th>
+            <th>글작성자:${data.writer}</th>
+            <th>작성일자 <fmt:formatDate value="${data.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></th>
+            <th>조회수:${data.viewcnt}</th>
         </tr>
         <tr>
-        	<td>작성일자</td>
-        	<td><fmt:formatDate value="${data.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-        </tr>
-        <tr>
-        	<td>글제목</td><td>${data.title}</td>
-        </tr>
-         <tr>
-        	<td>글내용</td><td>${data.content}</td>
-        </tr>
-         <tr>
-        	<td>글쓴이</td><td>${data.writer}</td>
-        </tr>
-         <tr>
-        	<td>조회수</td><td>${data.viewcnt}</td>
+        	<td colspan="5">${data.content}</td>
         </tr>
     </table>
    </div>
