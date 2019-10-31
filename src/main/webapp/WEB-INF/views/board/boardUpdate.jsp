@@ -31,19 +31,19 @@
 </nav>
 <div class="container">
 	<form name ="updateform" method="POST" action="${cp}/board/boardUpdate">
-		<div>글번호</div>
-		<div><input name="bno" value="${data.bno}" type="text" readonly="readonly"></div>
-		<div>작성자</div>	
-		<div><input name="writer" value="${data.writer}" type="text" readonly="readonly"></div>
-		<div>게시글제목:</div>	
-		<div><input name="title" value="${data.title}" type="text" readonly="readonly"></div>
-		<div>게시글내용</div>	
-		<div><textarea name="content" rows="10" cols="100">${data.content }</textarea></div>
-		<div>조회수</div>	
-        <div><input name="viewcnt" value="${data.viewcnt}" type="text" readonly="readonly"/></div>
-        <div>작성일자</div>
-        <div><fmt:formatDate value="${data.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
-        
+		<table class="table table-hover">
+			<div><input name="bno" value="${data.bno}" type="text" readonly="readonly"></div>
+			<div>작성자</div>	
+			<div><input name="writer" value="${data.writer}" type="text" readonly="readonly"></div>
+			<div>게시글제목:</div>	
+			<div><input name="title" value="${data.title}" type="text" readonly="readonly"></div>
+			<div>게시글내용</div>	
+			<div><textarea name="content" rows="10" cols="100">${data.content }</textarea></div>
+			<div>조회수</div>	
+        	<div><input name="viewcnt" value="${data.viewcnt}" type="text" readonly="readonly"/></div>
+        	<div>작성일자</div>
+        	<div><fmt:formatDate value="${data.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+        </table>
         <div style="text-align:center;">
 		<button type="submit" class="btn btn-Light" >수정</button>
 		<button type="reset"  class="btn btn-Light">리셋</button>
