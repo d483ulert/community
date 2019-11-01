@@ -10,7 +10,6 @@
 <title>게시글 보기</title>
 <link rel="stylesheet" type="text/css" href="${cp}/resources/css/normal.css" />
 <script src="${cp}/resources/js/js.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -29,12 +28,12 @@
 </nav>
 <div class="container">
 	<table class="table table-hover">
-        <tr>
-        	<th>번호:${data.bno}</th>
+		<tr>
+        	<th>${data.bno}</th>
             <th>${data.title}</th>
-            <th>글작성자:${data.writer}</th>
-            <th>작성일자 <fmt:formatDate value="${data.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></th>
-            <th>조회수:${data.viewcnt}</th>
+            <th>${data.writer}</th>
+            <th> <fmt:formatDate value="${data.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></th>
+            <th>${data.viewcnt}</th>
         </tr>
         <tr>
         	<td colspan="5">${data.content}</td>

@@ -6,8 +6,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="board">
 
 	<select id="boardList" resultType="com.my.page.board.BoardVo">
-			select bno,title,writer,regdate,viewcnt
-			from board order by bno desc
+		select bno
+			  ,title
+			  ,writer
+			  ,regdate
+			  ,viewcnt
+		from board order by bno desc
 	</select>
 	
   	<insert id="boardWriter">
@@ -16,8 +20,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    	</insert>
    	
    	<select id="boardRead" resultType="com.my.page.board.BoardVo">
-   			select bno,title,content,regdate,viewcnt
-   			from board where bno = #{bno}
+   		select bno
+   		,title
+   		,writer
+   		,content
+   		,regdate
+   		,viewcnt
+        from board where bno = #{bno}
    	</select>
    	
    	
@@ -28,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
  	<delete id="boardDelete">
  		delete from board where bno= #{bno}
-	
+
 	</delete>
 
 </mapper>
