@@ -29,22 +29,22 @@
 		</ul>
 	</div>
 </nav>
-<div class="container"><form name="updateform" method="POST" action="${cp}/board/boardUpdate">
-        <div>글번호</div>
-        <div><input name="bno" value="${data.bno}" type="text" readonly="readonly"/></div>
-        <div>작성자</div>
-        <div><input name="writer" value="${data.writer}" type="text" readonly="readonly"/></div>
-        <div>게시글제목 : </div>
-        <div><input name="title" value="${data.title}" type="text"/></div>
-        <div>게시글내용 : </div>
-        <div><textarea name="content" rows="5" cols="50">${data.content}</textarea></div>
-        <div>조회수</div>
-        <div><input name="viewcnt" value="${data.viewcnt}" type="text" readonly="readonly"/></div>
-        <div>작성일자</div>
-        <div><fmt:formatDate value="${data.regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
-        <div>
-            <input type="submit" value="글수정"/>
-        </div>
+<div class="container">
+   <form name="updateform" method="POST" action="${cp}/board/boardUpdate">
+      	<table class="table table-hover">
+      			<tr>
+      				<th>번호:<input name="bno" value="${data.bno}" type="text" readonly="readonly"/></th>
+      			</tr>
+ 				<tr>
+ 					<th>제목 <input name="title" id="title" size="10" placeholder="제목"></th>
+ 			 	</tr>
+
+ 				
+ 				<tr>
+ 					<td><textarea name="content" id="content" rows="10" cols="100" placeholder="내용"></textarea></td>
+ 				</tr>
+			</table> 
+			<button class="btn btn-Light" type="submit">확인</button>
     </form>
 </div>
 

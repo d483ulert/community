@@ -34,15 +34,18 @@
  		<form name="bdto" method="post" action="${cp}/board/boardWrite">
  			<table class="table table-hover">
  				<tr>
- 					<th>제목 <input name="title" id="title" size="50" placeholder="제목"></th>
- 					<th>이름 <input name="writer" id="writer" placeholder="이름입력"></th>
+ 					<th>제목 <input name="title" id="title" size="10" placeholder="제목"></th>
+ 			 		
+ 			 	</tr>
+ 			 	<tr>
+ 			 		<th>이름 <input name="writer" id="writer" placeholder="이름입력"></th>
  				</tr>	
+ 				
  				<tr>
- 					<td>내용 <textarea name="content" id="content" rows="10" cols="150" placeholder="내용"></textarea></td>
+ 					<td><textarea name="content" id="content" rows="10" cols="100" placeholder="내용"></textarea></td>
  				</tr>
 			</table> 
-			<button class="btn btn-Light" type="submit" >확인</button>
-			
+			<button class="btn btn-Light" type="submit">확인</button>
 		</form>
 	</div>
 </body>
