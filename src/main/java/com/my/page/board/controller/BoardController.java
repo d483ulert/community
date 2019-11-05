@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.my.page.board.BoardDAO;
 import com.my.page.board.BoardVo;
+import com.my.page.board.PageMaker;
 import com.my.page.board.service.BoardServiceImpl;
 import com.my.page.board.service.BoardService;
 
@@ -29,9 +30,13 @@ public class BoardController{
 	BoardService boardService;
 
 	@RequestMapping("/boardList")
-	public String boardList(Model model) throws Exception{
+	public String boardList(@ModelAttribute("pageging") BoardVo pageing,Model model) throws Exception{
 		List<BoardVo> list = boardService.boardList();
 		model.addAttribute("list",list);
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setPageing(pageing);
+		pageMaker.setTotalCount(service.listCountCriteria(pageing));
+		model.addAttribute("pageMaker", pageMaker);
 		return "/board/boardList";
 	}
 

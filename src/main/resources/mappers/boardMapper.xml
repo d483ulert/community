@@ -39,6 +39,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		delete from board where bno= #{bno}
 
 	</delete>
+	
+	<select id="listCriteria" resultType="com.my.page.board.BoardVo">
+	
+		<![CDATA[
+			select
+    			bno
+    		   ,title
+    		   ,content
+    		   ,writer
+    		   ,regdate
+    		   ,viewcnt
+			from  tbl_board  where bno > 0
+			order by bno desc, regdate desc
+			limit #{pageStart}, #{perPageNum}
+		]]>
+		</select>
 
 </mapper>
 
