@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,26 +52,8 @@
         </c:forEach>
     </table>
    </div>
-   <div class="container">
-			  <div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-              
-              <li th:if="${pageMaker.prev} == true">
-              	<a th:href="@{/samplehome/board/listPage(page=${pageMaker.startPage}-1,perPageNum=${pageMaker.cri.perPageNum})}">&laquo;</a>
-              </li>
-              
-              <li th:each="idx,iterStat : ${#numbers.sequence(pageMaker.startPage,pageMaker.endPage)}"  th:classappend="${pageMaker.cri.page} == ${idx} ? active : null">
-                <a th:href="@{/samplehome/board/listPage(page=${idx},perPageNum=${pageMaker.cri.perPageNum})}" th:text="${idx}"></a>
-              </li>
-                
-              <li th:if="${pageMaker.next} == true and ${pageMaker.endPage > 0}">
-              	<a th:href="@{/samplehome/board/listPage(page=${pageMaker.endPage}+1,perPageNum=${pageMaker.cri.perPageNum})}">&raquo;</a>
-              </li>
-              
-              </ul>
-              
-            </div>
-		</div>
+
+    
     <div style="text-align:center;">
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/boardWrite';">글쓰기</button>
 	</div>

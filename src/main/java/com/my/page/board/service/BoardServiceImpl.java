@@ -35,4 +35,6 @@ public class BoardServiceImpl implements BoardService{
     public void deleteBoard(int bno) throws Exception{
     	boardDao.boardDelete(bno);
     }
+    
+   
 }

@@ -18,4 +18,5 @@ public interface BoardService {
 	
 	//D
 	public void deleteBoard(int bno) throws Exception;
+	
 }

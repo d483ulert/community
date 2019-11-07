@@ -33,10 +33,6 @@ public class BoardController{
 	public String boardList(@ModelAttribute("pageging") BoardVo pageing,Model model) throws Exception{
 		List<BoardVo> list = boardService.boardList();
 		model.addAttribute("list",list);
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setPageing(pageing);
-		pageMaker.setTotalCount(service.listCountCriteria(pageing));
-		model.addAttribute("pageMaker", pageMaker);
 		return "/board/boardList";
 	}
 

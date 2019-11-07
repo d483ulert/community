@@ -35,4 +35,5 @@ public class BoardDAOImpl implements BoardDAO{
 		sqlSession.delete("board.boardDelete",bno);
 	}
 	
+
 }
