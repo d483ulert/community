@@ -15,6 +15,7 @@
 </head>
 <body>
 
+
 <nav class="navbar navbar-default">
 	<div class="navbar-header">
 		<a class="navbar-brand" href="${cp}"> JS커뮤니티 </a>
@@ -52,7 +53,24 @@
         </c:forEach>
     </table>
    </div>
-
+	<div style="display: block; text-align: center;">		
+		<c:if test="${paging.startPage != 1 }">
+			<a href="/board/boardList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+		</c:if>
+		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != paging.nowPage }">
+					<a href="/board/boardList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${paging.endPage != paging.lastPage}">
+			<a href="/board/boardList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+		</c:if>
+	</div>
     
     <div style="text-align:center;">
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/boardWrite';">글쓰기</button>

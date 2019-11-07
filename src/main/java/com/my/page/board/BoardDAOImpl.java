@@ -4,6 +4,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import com.my.page.board.BoardVo;
+import com.my.page.board.PagingVo;
+
 
 @Repository
 public class BoardDAOImpl implements BoardDAO{
@@ -34,6 +36,17 @@ public class BoardDAOImpl implements BoardDAO{
 	public void boardDelete(int bno) throws Exception{
 		sqlSession.delete("board.boardDelete",bno);
 	}
+	
+	@Override
+	public int countBoard() throws Exception{
+		 return sqlSession.selectOne("board.countBoard");
+	}
+
+	@Override
+	public List<BoardVo> selectBoard(PagingVo vo) throws Exception{
+		return sqlSession.selectList("board.boardList");
+	}
+
 	
 
 }

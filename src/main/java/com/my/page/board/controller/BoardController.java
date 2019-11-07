@@ -2,7 +2,6 @@ package com.my.page.board.controller;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,10 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.my.page.board.PagingVo;
 import com.my.page.board.BoardDAO;
 import com.my.page.board.BoardVo;
-import com.my.page.board.PageMaker;
 import com.my.page.board.service.BoardServiceImpl;
 import com.my.page.board.service.BoardService;
 
@@ -30,7 +28,21 @@ public class BoardController{
 	BoardService boardService;
 
 	@RequestMapping("/boardList")
-	public String boardList(@ModelAttribute("pageging") BoardVo pageing,Model model) throws Exception{
+	public String boardList(PagingVo vo, Model model
+			,@RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) throws Exception{
+		int total = boardService.countBoard();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		vo = new PagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", vo);
+		model.addAttribute("viewAll", boardService.selectBoard(vo));
 		List<BoardVo> list = boardService.boardList();
 		model.addAttribute("list",list);
 		return "/board/boardList";
@@ -72,5 +84,6 @@ public class BoardController{
     	boardService.deleteBoard(bno);
     	return "redirect:/board/boardList"; 
     }
+    
    
 }
