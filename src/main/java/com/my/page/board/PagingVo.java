@@ -12,7 +12,8 @@ public class PagingVo {
 				,start
 				,end;
 	private int cntPage = 5;
-
+	public PagingVo() {}
+	
 	public PagingVo(int total, int nowPage, int cntPerPage) {
 		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);
