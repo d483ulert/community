@@ -31,7 +31,7 @@
 		<tr>
         	<th>${data.bno}</th>
             <th>${data.title}</th>
-            <th>${data.writer}</th>
+            <th>${member.memId}</th>
             <th> <fmt:formatDate value="${data.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></th>
             <th>${data.viewcnt}</th>
         </tr>
@@ -41,10 +41,11 @@
     </table>
    </div>
 	<div style="text-align:center;">
+	<c:if test="${memId == $memId}">
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/updatepage?bno=${data.bno}';">수정</button>
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/delete?bno=${data.bno}';">삭제</button>
+	</c:if>
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/boardList';">글목록</button>
-	
 	</div>
 </body>
 </html>

@@ -38,7 +38,7 @@
  			 		
  			 	</tr>
  			 	<tr>
- 			 		<th>이름 <input name="writer" id="writer" placeholder="이름입력"></th>
+ 			 		<th>이름  ${member.memId}</th>
  				</tr>	
  				
  				<tr>

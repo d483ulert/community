@@ -8,21 +8,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="boardList" resultType="com.my.page.board.BoardVo">
 		select bno
 			  ,title
-			  ,writer
+			  
 			  ,regdate
 			  ,viewcnt
 		from board order by bno desc
 	</select>
 	
   	<insert id="boardWriter">
-        insert into board (bno, title, content, writer )
-        values ((select nvl(max(bno)+1,1) from board), #{title}, #{content}, #{writer})
+        insert into board (bno, title, content  )
+        values ((select nvl(max(bno)+1,1) from board), #{title}, #{content})
    	</insert>
    	
    	<select id="boardRead" resultType="com.my.page.board.BoardVo">
    		select bno
    		,title
-   		,writer
    		,content
    		,regdate
    		,viewcnt

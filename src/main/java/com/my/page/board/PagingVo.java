@@ -11,7 +11,7 @@ public class PagingVo {
 				,lastPage
 				,start
 				,end;
-	private int cntPage = 5;
+	private int cntPage = 10;
 	public PagingVo() {}
 	
 	public PagingVo(int total, int nowPage, int cntPerPage) {
