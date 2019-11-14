@@ -31,7 +31,7 @@
 		<tr>
         	<th>${data.bno}</th>
             <th>${data.title}</th>
-            <th>${member.memId}</th>
+            <th>${data.writer}</th>
             <th> <fmt:formatDate value="${data.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></th>
             <th>${data.viewcnt}</th>
         </tr>

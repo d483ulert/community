@@ -32,14 +32,18 @@ public class MemberController {
 	
 	// Join
 	@RequestMapping("/joinForm")
-	public String joinForm(Member member,  Model model) {
-		model.addAttribute("memId",member);
+	public String joinForm(Member member, Model model) {
+		model.addAttribute("memId", member);
+		model.addAttribute("memPw", member);
+		model.addAttribute("memMail", member);
+		model.addAttribute("memPurcNum", member);
+
+		
 		return "/member/joinForm";
 	}
 	
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String joinReg(Member member) {
-		
+	public String joinReg(Member member ) {
 		service.memberRegister(member);	
 		return "/member/joinOk";
 	}

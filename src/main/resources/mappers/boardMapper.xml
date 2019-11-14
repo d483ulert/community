@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="boardList" resultType="com.my.page.board.BoardVo">
 		select bno
 			  ,title
-			  
+			  ,writer
 			  ,regdate
 			  ,viewcnt
 		from board order by bno desc
@@ -22,6 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    	<select id="boardRead" resultType="com.my.page.board.BoardVo">
    		select bno
    		,title
+   		,writer
    		,content
    		,regdate
    		,viewcnt
