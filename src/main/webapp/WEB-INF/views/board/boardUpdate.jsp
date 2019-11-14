@@ -12,6 +12,8 @@
 <link rel="stylesheet" type="text/css" href="${cp}/resources/css/normal.css" />
 <script src="${cp}/resources/js/js.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="${cp}/resources/ckeditor/ckeditor.js"></script>
+
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -41,11 +43,21 @@
 
  				
  				<tr>
- 					<td><textarea name="content" id="content" rows="10" cols="100" placeholder="내용"></textarea></td>
+ 					<td><textarea name="content" id="description" rows="10" cols="100" placeholder="내용"></textarea></td>
  				</tr>
+ 				 <tr>
+        			<td>상품이미지</td>
+        			<td>
+            			<input type="file" name="file1" id="file1"> 
+        			</td>
+    			</tr>
 			</table> 
 			<button class="btn btn-Light" type="submit">확인</button>
     </form>
+<script>
+//id가 description인 태그에 ckeditor를 적용시킴
+CKEDITOR.replace("description"); //이미지 업로드 안됨
+</script>  
 </div>
 
 </body>

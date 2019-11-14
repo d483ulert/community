@@ -46,6 +46,12 @@
  				<tr>
  					<td><textarea name="content" id="description" rows="10" cols="100" placeholder="내용"></textarea></td>
  				</tr>
+ 				 <tr>
+        			<td>상품이미지</td>
+        			<td>
+            			<input type="file" name="file1" id="file1"> 
+        			</td>
+    			</tr>
 			</table> 
 			<button class="btn btn-Light" type="submit">확인</button>
 		</form>
