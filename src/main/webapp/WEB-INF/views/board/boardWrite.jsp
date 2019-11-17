@@ -47,19 +47,35 @@
  					<td><textarea name="content" id="description" rows="10" cols="100" placeholder="내용"></textarea></td>
  				</tr>
  				 <tr>
-        			<td>상품이미지</td>
-        			<td>
+        			<td>파일첨부
             			<input type="file" name="file1" id="file1"> 
         			</td>
     			</tr>
 			</table> 
 			<button class="btn btn-Light" type="submit">확인</button>
 		</form>
-<script>
-//id가 description인 태그에 ckeditor를 적용시킴
-CKEDITOR.replace("description"); //이미지 업로드 안됨
-</script>  
+	<script>
 
+	CKEDITOR.replace("description");
+
+	</script> 
+
+	<script>
+
+    var editorConfig = { filebrowserUploadUrl : "/fileUpload.do" };
+    
+    var ck = null;
+
+    window.onload = function(){
+        ck = CKEDITOR.replace("textarea ID" , editorConfig);
+    };
+	</script>
+	
+    <script type = "text/javascript">
+        window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}','${filePath}', '업로드완료');
+    </script>
+
+	
 	</div>
 </body>
 </html>
