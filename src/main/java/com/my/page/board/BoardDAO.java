@@ -1,6 +1,5 @@
 package com.my.page.board;
 import java.util.List;
-import com.my.page.board.PagingVo;
 import com.my.page.board.BoardVo;
 
 public interface BoardDAO {
@@ -21,8 +20,5 @@ public interface BoardDAO {
 	
 	//게시물 총 개수
 	public int countBoard() throws Exception;
-
-	// 페이징 처리 게시글 조회
-	public List<BoardVo> selectBoard(PagingVo vo) throws Exception;
 
 }

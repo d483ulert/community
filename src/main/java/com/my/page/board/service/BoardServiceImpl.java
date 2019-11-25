@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import com.my.page.board.BoardDAO;
 import com.my.page.board.BoardVo;
-import com.my.page.board.PagingVo;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -42,9 +41,6 @@ public class BoardServiceImpl implements BoardService{
     	return boardDao.countBoard();
     }
 
-    @Override
-    public List<BoardVo> selectBoard(PagingVo vo) throws Exception {
-    	return boardDao.selectBoard(vo);
-    }
+
    
 }

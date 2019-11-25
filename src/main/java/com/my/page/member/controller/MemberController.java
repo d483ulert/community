@@ -33,11 +33,7 @@ public class MemberController {
 	// Join
 	@RequestMapping("/joinForm")
 	public String joinForm(Member member, Model model) {
-		model.addAttribute("memId", member);
-		model.addAttribute("memPw", member);
-		model.addAttribute("memMail", member);
-		model.addAttribute("memPurcNum", member);
-
+		model.addAttribute("Member",member );
 		
 		return "/member/joinForm";
 	}

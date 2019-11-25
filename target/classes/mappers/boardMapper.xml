@@ -45,19 +45,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM board
 	</select>
 
-	<!-- 페이징 처리 후 게시글 조회 -->
-	<select id="selectBoard" resultType="com.my.page.board.BoardVo">
-		SELECT * 
-			FROM (
-				SELECT ROWNUM RN, A.* 
-					FROM (
-							SELECT * 
-							FROM BOARD 
-							ORDER BY SEQ DESC 
-							) A
-				)
-		WHERE RN BETWEEN #{start} AND #{end}
-	</select>
 
 
 </mapper>

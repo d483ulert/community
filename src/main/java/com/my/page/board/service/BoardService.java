@@ -1,7 +1,6 @@
 package com.my.page.board.service;
 import java.util.List;
 import com.my.page.board.BoardVo;
-import com.my.page.board.PagingVo;
 
 
 public interface BoardService {
@@ -23,6 +22,4 @@ public interface BoardService {
 	// 게시물 총 갯수
 	public int countBoard() throws Exception;
 
-	// 페이징 처리 게시글 조회
-	public List<BoardVo> selectBoard(PagingVo vo) throws Exception;
 }
