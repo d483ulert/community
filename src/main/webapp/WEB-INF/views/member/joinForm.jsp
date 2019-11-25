@@ -30,7 +30,7 @@
 	<h1 style="text-align:center;">회원가입</h1>
 	
 	
-	<form action="${cp}/member/join" method="post" commandName="member">
+	<form:form action="${cp}/member/join" method="post" commandName="member">
 		<table class="table table-bordered" style="text-align:center border:1px solid">
 			<tr>
 				<td style="text-align:center" >아이디</td>
@@ -50,7 +50,7 @@
 			<button class="btn" type="submit">로그인</button>
 			<button class="btn" type="reset">취소</button>
 		</div>
-</form>
+</form:form>
 
 </body>
 </html>

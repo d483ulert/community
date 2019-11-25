@@ -1,14 +1,10 @@
 package com.my.page.member.controller;
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,9 +28,7 @@ public class MemberController {
 	
 	// Join
 	@RequestMapping("/joinForm")
-	public String joinForm(Member member, Model model) {
-		model.addAttribute("Member",member );
-		
+	public String joinForm(Member member) {		
 		return "/member/joinForm";
 	}
 	
