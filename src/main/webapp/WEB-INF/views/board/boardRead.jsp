@@ -41,7 +41,7 @@
     </table>
    </div>
 	<div style="text-align:center;">
-	<c:if test="${memId == $memId}">
+	<c:if test="${member.memId == data.writer}">
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/updatepage?bno=${data.bno}';">수정</button>
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/delete?bno=${data.bno}';">삭제</button>
 	</c:if>
