@@ -23,6 +23,7 @@ public class BoardServiceImpl implements BoardService{
 	
     @Override
     public BoardVo boardRead(int bno) throws Exception {
+    	boardDao.updateViewCnt(bno);
         return boardDao.boardRead(bno);
     }
     

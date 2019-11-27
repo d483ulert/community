@@ -40,6 +40,11 @@ public class BoardDAOImpl implements BoardDAO{
 	public int countBoard() throws Exception{
 		 return sqlSession.selectOne("board.countBoard");
 	}
+	@Override
+	public void updateViewCnt(int bno)throws Exception{
+		sqlSession.update("board.plusViewcnt",bno);
+	}
+	
 
 
 

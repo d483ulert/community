@@ -20,5 +20,8 @@ public interface BoardDAO {
 	
 	//게시물 총 개수
 	public int countBoard() throws Exception;
+	
+	//조회수
+	public void updateViewCnt(int bno)throws Exception;
 
 }

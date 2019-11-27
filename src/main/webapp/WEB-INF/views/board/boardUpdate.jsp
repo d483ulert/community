@@ -19,7 +19,7 @@
 	<script type="text/javascript">
 		function Update(){
 			alert("게시글  수정되었습니다.");
-			location.href="${cp}/board/boardRead?bno=${board.bno}";
+			location.reload();
 		}
 		</script>
 <nav class="navbar navbar-default">
