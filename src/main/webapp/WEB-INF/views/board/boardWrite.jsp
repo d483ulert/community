@@ -40,7 +40,7 @@
  			 		
  			 	</tr>
  			 	<tr>
- 			 		<th>이름</th>
+ 			 		<th>${member.memId} <input type="hidden" name="writer" id="writer" value="${member.memId}"></th>
  				</tr>	
  				
  				<tr>
