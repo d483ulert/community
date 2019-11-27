@@ -13,12 +13,15 @@
 <script src="${cp}/resources/js/js.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="${cp}/resources/ckeditor/ckeditor.js"></script>
-<script type = "text/javascript">
-    <@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-</script>
 
 </head>
 <body>
+	<script type="text/javascript">
+		function Update(){
+			alert("게시글  수정되었습니다.");
+			location.href="${cp}/board/boardRead?bno=${board.bno}";
+		}
+		</script>
 <nav class="navbar navbar-default">
 	<div class="navbar-header">
 
@@ -54,7 +57,7 @@
         			</td>
     			</tr>
 			</table> 
-			<button class="btn btn-Light" type="submit">확인</button>
+			<button class="btn btn-Light" type="submit" onclick="Update()">수정</button>
     	</form>
 
 	<script>

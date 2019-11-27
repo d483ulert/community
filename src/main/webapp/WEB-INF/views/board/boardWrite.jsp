@@ -16,6 +16,12 @@
 
 </head>
 <body>
+	<script type="text/javascript">
+		function enroll(){
+			alert("게시글 작성되었습니다.");
+			location.href="${cp}/board/boardList";
+		}
+	</script>
 <nav class="navbar navbar-default">
 	<div class="navbar-header">
 
@@ -52,7 +58,7 @@
         			</td>
     			</tr>
 			</table> 
-			<button class="btn btn-Light" type="submit">확인</button>
+			<button class="btn btn-Light" type="submit" onclick="enroll()">등록</button>
 		</form>
 	<script>
 

@@ -44,7 +44,6 @@
 
 		<h4 style=text-align:center;>안녕하세요. 한신대학교 컴퓨터공학과를 재학중인 김지성입니다.</h4>
 		<h4 style="text-align:center;">spring, jsp,mybatis, oracle을 이용해 웹 페이지를 제작해봤습니다.</h4>
-		<h4 style="text-align:center;">제작기간은 한달입니다.</h4>
 	</footer>
 	
 	</c:if>
