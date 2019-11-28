@@ -19,7 +19,7 @@
 	<script type="text/javascript">
 		function Update(){
 			alert("게시글  수정되었습니다.");
-			location.reload();
+			location.href="${cp}/board/boardList";
 		}
 		</script>
 <nav class="navbar navbar-default">
@@ -57,7 +57,7 @@
         			</td>
     			</tr>
 			</table> 
-			<button class="btn btn-Light" type="submit" onclick="Update()">수정</button>
+			<button class="btn btn-Light" type="submit" onclick="Update();">수정</button>
     	</form>
 
 	<script>

@@ -22,6 +22,6 @@ public interface BoardDAO {
 	public int countBoard() throws Exception;
 	
 	//조회수
-	public void updateViewCnt(int bno)throws Exception;
+	void updateViewCnt(int bno) throws Exception;
 
 }
