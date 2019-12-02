@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectBoard" resultType="com.my.page.board.BoardVo" parameterType="com.my.page.board.Criteria">
-		SELECT a.*,
+         SELECT a.*,
          ROWNUM rnum,
          FLOOR((ROWNUM - 1) /#{rows} + 1) pageNumber
                   FROM  (

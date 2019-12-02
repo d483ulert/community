@@ -31,18 +31,7 @@
 	</div>
 </nav>
 <div class="container">
-	<div style="float: right;">
-		<select id="cntPerPage" name="sel" onchange="selChange()">
-			<option value="5"
-				<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
-			<option value="10"
-				<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
-			<option value="15"
-				<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
-			<option value="20"
-				<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
-		</select>
-	</div> <!-- 옵션선택 끝 -->
+
 	<table class="table table-hover" >
         <tr>
             <th>번호</th>
@@ -65,7 +54,21 @@
         </c:forEach>
     </table>
    </div>
+	<div style="text-align:center;">
+  		<ul>
+    		<c:if test="${pageMaker.prev}">
+    			<li><a href="list${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+    		</c:if> 
 
+    		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+    			<li><a href="list${pageMaker.makeQuery(idx)}">${idx}</a></li>
+    		</c:forEach>
+
+    		<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+    			<li><a href="list${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
+    		</c:if> 
+  		</ul>
+	</div>
     
     <div style="text-align:center;">
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/boardWrite';">글쓰기</button>

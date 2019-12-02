@@ -4,11 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주소가 이상합니다.</title>
 </head>
 <body>
 
-<h3>404 에러입니다.</h3>
+	<div class="images" style="border:2px solid black; text-align:center;">
+		<img src="resources/img/hh22.JPG" style="width:70%; height:500%; text-align:center;">
+		<div style="font-size:50px;">404 에러입니다.</div>
+	</div>
 
 </body>
 </html>

@@ -2,6 +2,8 @@ package com.my.page.board.controller;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,13 +30,20 @@ public class BoardController{
 	@Inject
 	BoardService boardService;
 
-	@RequestMapping("/boardList")
-	public String boardList(Model model,Criteria cri) throws Exception{
+	@ModelAttribute("cri")
+	@RequestMapping(value="/boardList", method = RequestMethod.GET)
+	public String boardList( Model model,Criteria cri) throws Exception{
 		
+		model.addAttribute("list",boardService.list(cri));
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(boardService.listCount());		
+		model.addAttribute("pageMaker", pageMaker);
 		
 		List<BoardVo> list = boardService.boardList();
 		model.addAttribute("list",list);
-		model.addAttribute("list",boardService.list(cri));
+
 		return "/board/boardList";
 	}
 
@@ -74,8 +83,9 @@ public class BoardController{
     	boardService.deleteBoard(bno);
     	return "redirect:/board/boardList"; 
     }
-	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
-	public String list(Model model, Criteria cri) throws Exception{
+    /*
+	@RequestMapping(value = "/boardPaging", method = RequestMethod.GET)
+	public void list(@ModelAttribute("cri")Model model, Criteria cri) throws Exception{
 		
 		model.addAttribute("list", boardService.list(cri));
 		
@@ -85,7 +95,7 @@ public class BoardController{
 		
 		model.addAttribute("pageMaker", pageMaker);
 		
-		return "/board/boardList";
 		
 	}
+	*/
 }
