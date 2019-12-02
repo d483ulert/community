@@ -13,6 +13,8 @@ import com.my.page.board.BoardDAO;
 import com.my.page.board.BoardVo;
 import com.my.page.board.service.BoardServiceImpl;
 import com.my.page.board.service.BoardService;
+import com.my.page.board.Criteria;
+import com.my.page.board.PageMaker;
 
 @Controller
 @RequestMapping("/board")
@@ -27,10 +29,12 @@ public class BoardController{
 	BoardService boardService;
 
 	@RequestMapping("/boardList")
-	public String boardList(Model model) throws Exception{
+	public String boardList(Model model,Criteria cri) throws Exception{
+		
 		
 		List<BoardVo> list = boardService.boardList();
 		model.addAttribute("list",list);
+		model.addAttribute("list",boardService.list(cri));
 		return "/board/boardList";
 	}
 
@@ -70,6 +74,18 @@ public class BoardController{
     	boardService.deleteBoard(bno);
     	return "redirect:/board/boardList"; 
     }
-    
-   
+	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
+	public String list(Model model, Criteria cri) throws Exception{
+		
+		model.addAttribute("list", boardService.list(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(boardService.listCount());
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return "/board/boardList";
+		
+	}
 }

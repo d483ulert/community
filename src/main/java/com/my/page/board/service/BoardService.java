@@ -1,7 +1,7 @@
 package com.my.page.board.service;
 import java.util.List;
 import com.my.page.board.BoardVo;
-
+import com.my.page.board.Criteria;
 
 public interface BoardService {
 
@@ -19,7 +19,9 @@ public interface BoardService {
 	//D
 	public void deleteBoard(int bno) throws Exception;
 	
-	// 게시물 총 갯수
-	public int countBoard() throws Exception;
+	//페이징
+	public List<BoardVo> list(Criteria cri) throws Exception;
+	public int listCount() throws Exception;
+		
 
 }

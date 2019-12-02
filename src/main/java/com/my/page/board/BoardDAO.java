@@ -1,6 +1,8 @@
 package com.my.page.board;
 import java.util.List;
+
 import com.my.page.board.BoardVo;
+
 
 public interface BoardDAO {
 	//List
@@ -17,11 +19,12 @@ public interface BoardDAO {
 	
 	//D
 	public void boardDelete(int bno) throws Exception;
-	
-	//게시물 총 개수
-	public int countBoard() throws Exception;
-	
+		
 	//조회수
 	void updateViewCnt(int bno) throws Exception;
+	
+	//페이징
+	public List<BoardVo> list(Criteria cri) throws Exception;
+	public int listCount() throws Exception;
 
 }

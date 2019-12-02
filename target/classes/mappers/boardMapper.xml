@@ -43,14 +43,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 총 게시글 갯수 출력 -->
 	<select id="countBoard" resultType="int">
-		SELECT COUNT(*) FROM board
+	<![CDATA[
+		SELECT COUNT(BNO)
+		  FROM board
+		 WHERE BNO > 0
+	]]>		
 	</select>
+	
+	<select id="selectBoard" resultType="com.my.page.board.BoardVo" parameterType="com.my.page.board.Criteria">
+		SELECT a.*,
+         ROWNUM rnum,
+         FLOOR((ROWNUM - 1) /#{rows} + 1) pageNumber
+                  FROM  (
+               SELECT bno,
+               title,
+               writer,
+               content,
+               regdate,
+               viewcnt
+          FROM board
+          ORDER BY bno DESC) a
 
+	</select>
+	
+
+<!-- 조회수 -->
   	<update id="plusViewcnt">
         update board set viewcnt = viewcnt + 1
          where bno = #{bno}
     </update>
-
+    
 
 </mapper>
 

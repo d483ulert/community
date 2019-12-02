@@ -5,6 +5,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import com.my.page.board.BoardDAO;
 import com.my.page.board.BoardVo;
+import com.my.page.board.Criteria;
+
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -36,12 +38,13 @@ public class BoardServiceImpl implements BoardService{
     public void deleteBoard(int bno) throws Exception{
     	boardDao.boardDelete(bno);
     }
-    
+  
     @Override
-    public int countBoard() throws Exception {
-    	return boardDao.countBoard();
+    public List<BoardVo> list(Criteria cri) throws Exception{
+    	return boardDao.list(cri);
     }
-
-
-   
+    @Override
+    public int listCount() throws Exception{
+    	return boardDao.listCount();
+    }
 }
