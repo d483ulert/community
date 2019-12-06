@@ -3,10 +3,12 @@ package com.my.page.member.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.my.page.member.Member;
 import com.my.page.member.dao.MemberDao;
 
+@Transactional
 @Service
 public class MemberService implements IMemberService {
 	

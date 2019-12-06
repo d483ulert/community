@@ -1,7 +1,11 @@
 package com.my.page.board.service;
 import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import com.my.page.board.BoardVo;
 import com.my.page.board.Criteria;
+
 
 public interface BoardService {
 
