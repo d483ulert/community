@@ -9,7 +9,7 @@
 <body>
 
 	<div class="images" style="border:2px solid black; text-align:center;">
-		<img src="resources/img/hh22.JPG" style="width:70%; height:500%; text-align:center;">
+		<img src="resources/img/hh22.JPG" style="width:70%; height:50%; text-align:center;">
 		<div style="font-size:50px;">404 에러입니다.</div>
 	</div>
 
