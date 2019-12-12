@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.my.page.board.BoardDAO;
 import com.my.page.board.BoardVo;
 import com.my.page.board.Criteria;
@@ -49,4 +48,7 @@ public class BoardServiceImpl implements BoardService{
     public int listCount() throws Exception{
     	return boardDao.listCount();
     }
+
+
 }
+

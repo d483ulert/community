@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.my.page.member.service.Sha256;
 import com.my.page.member.Member;
 import com.my.page.member.service.MemberService;
 
@@ -34,6 +34,11 @@ public class MemberController {
 	
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinReg(Member member ) {
+		String encryPassword = Sha256.encrypt(member.getMemPw());
+		member.setMemPw(encryPassword);
+		System.out.println("두번째:" + member.getMemPw());
+
+
 		service.memberRegister(member);	
 		return "/member/joinOk";
 	}

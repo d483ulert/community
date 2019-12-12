@@ -46,7 +46,6 @@
             <td><a href="${cp}/board/boardRead?bno=${row.bno}">${row.title}</a></td>
             <td>${row.writer}</td>
             <td>
-              <!-- 데이터 타입을 사용하는 방법 -->
              	<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss" />
             </td>
             <td>${row.viewcnt}</td>

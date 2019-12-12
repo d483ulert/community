@@ -83,19 +83,4 @@ public class BoardController{
     	boardService.deleteBoard(bno);
     	return "redirect:/board/boardList"; 
     }
-    /*
-	@RequestMapping(value = "/boardPaging", method = RequestMethod.GET)
-	public void list(@ModelAttribute("cri")Model model, Criteria cri) throws Exception{
-		
-		model.addAttribute("list", boardService.list(cri));
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(boardService.listCount());
-		
-		model.addAttribute("pageMaker", pageMaker);
-		
-		
-	}
-	*/
 }
