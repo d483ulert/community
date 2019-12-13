@@ -45,7 +45,7 @@ public class BoardServiceImpl implements BoardService{
     	return boardDao.list(cri);
     }
     @Override
-    public int listCount() throws Exception{
+    public int listCount(Criteria cri) throws Exception{
     	return boardDao.listCount();
     }
 

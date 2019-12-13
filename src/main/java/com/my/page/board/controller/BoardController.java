@@ -14,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.my.page.board.BoardDAO;
 import com.my.page.board.BoardVo;
 import com.my.page.board.service.BoardServiceImpl;
+
+import ch.qos.logback.classic.Logger;
+
 import com.my.page.board.service.BoardService;
 import com.my.page.board.Criteria;
 import com.my.page.board.PageMaker;
@@ -30,7 +33,6 @@ public class BoardController{
 	@Inject
 	BoardService boardService;
 
-	@ModelAttribute("cri")
 	@RequestMapping(value="/boardList", method = RequestMethod.GET)
 	public String boardList( Model model,Criteria cri) throws Exception{
 		
@@ -38,15 +40,30 @@ public class BoardController{
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(boardService.listCount());		
+		pageMaker.setTotalCount(boardService.listCount(cri));		
 		model.addAttribute("pageMaker", pageMaker);
 		
+	
 		List<BoardVo> list = boardService.boardList();
 		model.addAttribute("list",list);
 
 		return "/board/boardList";
 	}
-
+	/*
+	@RequestMapping(value="/boardList",method=RequestMethod.GET)
+	public void listPage(Criteria cri, Model model) throws Exception{
+		//페이징 속성추가
+		model.addAttribute("list",boardService.list(cri));
+		//페이징 처리
+		PageMaker pageMaker = new PageMaker();
+		//페이징 설정
+		pageMaker.setCri(cri);
+		//데이터 전체 갯수 설정
+		pageMaker.setTotalCount(boardService.listCount(cri));
+		
+		model.addAttribute("pageMaker",pageMaker);
+	}
+*/
 	@RequestMapping("/boardWrite")
 	public String boardWrite(Model model)throws Exception {
 		return "/board/boardWrite";

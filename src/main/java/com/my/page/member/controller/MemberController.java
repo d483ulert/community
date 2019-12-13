@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.my.page.member.service.Sha256;
 import com.my.page.member.Member;
@@ -42,7 +44,7 @@ public class MemberController {
 		service.memberRegister(member);	
 		return "/member/joinOk";
 	}
-
+	
 	// Login
 	@RequestMapping("/loginForm")
 	public String loginForm(Member member) {

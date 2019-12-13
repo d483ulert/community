@@ -25,7 +25,7 @@ public interface BoardService {
 	
 	//페이징
 	public List<BoardVo> list(Criteria cri) throws Exception;
-	public int listCount() throws Exception;
+	public int listCount(Criteria cri) throws Exception;
 	
 
 }

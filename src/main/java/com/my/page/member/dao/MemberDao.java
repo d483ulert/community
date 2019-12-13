@@ -26,7 +26,6 @@ public class MemberDao implements IMemberDao {
 	
 	@Override
 	public int memberInsert(final Member member) {
-		
 		int result = 0;
 		
 		final String sql = "INSERT INTO member (memId, memPw, memMail) values (?,?,?)";
