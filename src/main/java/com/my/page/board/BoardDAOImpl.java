@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import com.my.page.board.BoardVo;
-import com.my.page.board.Criteria;
 @Repository
 public class BoardDAOImpl implements BoardDAO{
 
@@ -13,10 +12,10 @@ public class BoardDAOImpl implements BoardDAO{
 	SqlSession sqlSession;
 	
 	@Override
-	public List<BoardVo> boardList() throws Exception{
-		return sqlSession.selectList("board.boardList");
+	public List<BoardVo> boardList() throws Exception {
+		return sqlSession.selectList("board.boardList"); 
 	}
-
+	
 	@Override
 	public void writerBoard(BoardVo bdto) throws Exception{
 		sqlSession.insert("board.boardWriter",bdto);
@@ -37,17 +36,18 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	
 	@Override
-	public void updateViewCnt(int bno)throws Exception{
+	public void updateViewCnt(int bno) throws Exception{
 		sqlSession.update("board.plusViewcnt",bno);
 	}
+	
 	@Override
-	public List<BoardVo> list(Criteria cir) throws Exception{
-		return sqlSession.selectList("board.selectBoard");
+	public List<BoardVo> list(Criteria cri) throws Exception{
+		return sqlSession.selectList("board.selectBoard",cri);
 	}
 	@Override
 	public int listCount() throws Exception{
 		return sqlSession.selectOne("board.countBoard");
-		
 	}
-
+	
 }
+

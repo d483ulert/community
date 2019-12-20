@@ -45,25 +45,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="countBoard" resultType="int">
 	<![CDATA[
 		SELECT COUNT(BNO)
-		  FROM board
+		  FROM BOARD
 		 WHERE BNO > 0
-	]]>		
+	]]>
 	</select>
 	
-	<select id="selectBoard" resultType="com.my.page.board.BoardVo" parameterType="com.my.page.board.Criteria">
-         SELECT a.*,
-         ROWNUM rnum,
-         FLOOR((ROWNUM - 1) /#{rows} + 1) pageNumber
-                  FROM  (
-               SELECT bno,
-               title,
-               writer,
-               content,
-               regdate,
-               viewcnt
-          FROM board
-          ORDER BY bno DESC) a
+	<select id="selectBoard" resultType="com.my.page.board.BoardVo">
+	<![CDATA[
+	      select bno, title,writer,regdate,viewcnt 
+         from
+            ( select /*+INDEX_DESC(board pk_board)*/
+               rownum rn, bno, title, writer,regdate,viewcnt
+               from 
+                  board
+               where rownum <= #{perPageNum} * #{page}
+            )
+         where rn > (#{perPageNum}-1)*#{page}
 
+	
+	]]>
 	</select>
 	
 

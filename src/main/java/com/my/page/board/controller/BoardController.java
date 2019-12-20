@@ -1,5 +1,6 @@
 package com.my.page.board.controller;
 import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.my.page.board.BoardDAO;
 import com.my.page.board.BoardVo;
+import com.my.page.board.Criteria;
+import com.my.page.board.PageMaker;
 import com.my.page.board.service.BoardServiceImpl;
 
 import ch.qos.logback.classic.Logger;
 
 import com.my.page.board.service.BoardService;
-import com.my.page.board.Criteria;
-import com.my.page.board.PageMaker;
 
 @Controller
 @RequestMapping("/board")
@@ -33,37 +34,32 @@ public class BoardController{
 	@Inject
 	BoardService boardService;
 
-	@RequestMapping(value="/boardList", method = RequestMethod.GET)
-	public String boardList( Model model,Criteria cri) throws Exception{
+	@RequestMapping(value = "/boardPaging", method = RequestMethod.GET)
+	public String list(Model model, Criteria cri) throws Exception{
 		
-		model.addAttribute("list",boardService.list(cri));
-
+		model.addAttribute("list", boardService.list(cri));
+		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(boardService.listCount(cri));		
+		pageMaker.setTotalCount(boardService.listCount());
+		
 		model.addAttribute("pageMaker", pageMaker);
 		
+		return "/board/boardPaging";
+		
+	}
+	
+	@RequestMapping(value="/boardList", method = RequestMethod.GET)
+	public String boardList( Model model,Criteria cri) throws Exception{
 	
 		List<BoardVo> list = boardService.boardList();
 		model.addAttribute("list",list);
+		model.addAttribute("list",boardService.list(cri));
 
 		return "/board/boardList";
 	}
-	/*
-	@RequestMapping(value="/boardList",method=RequestMethod.GET)
-	public void listPage(Criteria cri, Model model) throws Exception{
-		//페이징 속성추가
-		model.addAttribute("list",boardService.list(cri));
-		//페이징 처리
-		PageMaker pageMaker = new PageMaker();
-		//페이징 설정
-		pageMaker.setCri(cri);
-		//데이터 전체 갯수 설정
-		pageMaker.setTotalCount(boardService.listCount(cri));
-		
-		model.addAttribute("pageMaker",pageMaker);
-	}
-*/
+
+	
 	@RequestMapping("/boardWrite")
 	public String boardWrite(Model model)throws Exception {
 		return "/board/boardWrite";

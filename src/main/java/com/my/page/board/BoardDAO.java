@@ -6,8 +6,8 @@ import com.my.page.board.BoardVo;
 
 public interface BoardDAO {
 	//List
-	public List<BoardVo> boardList() throws Exception;
-	
+    public List<BoardVo> boardList() throws Exception;
+
 	//C
 	public void writerBoard(BoardVo bdto) throws Exception;
 	
@@ -22,9 +22,13 @@ public interface BoardDAO {
 		
 	//조회수
 	void updateViewCnt(int bno) throws Exception;
-	
-	//페이징
+
+	//게시글 목록조회
 	public List<BoardVo> list(Criteria cri) throws Exception;
+	
+	//게시글 총 갯수
 	public int listCount() throws Exception;
+	
+
 
 }
