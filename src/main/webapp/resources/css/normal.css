@@ -224,6 +224,7 @@ th {
   thead {
     display: table-header-group;
   }
+  
   tr,
   img {
     page-break-inside: avoid;
@@ -262,6 +263,9 @@ th {
   .table-bordered td {
     border: 1px solid #ddd !important;
   }
+}
+.centersort{
+	list-style: none; float: left; padding: 6px;
 }
 .images{ 
 	text-align: center;

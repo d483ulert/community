@@ -53,7 +53,26 @@
         </c:forEach>
     </table>
    </div>
-   
+   <div class="container">
+   	<div class="row">
+   		<div class="col">
+  			<ul class="pagination">
+    		<c:if test="${pageMaker.prev}">
+    			<li class="page-item"><a href="${cp}/board/boardList${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+    		</c:if> 
+
+    		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+    			<li class="page-item"><a href="${cp}/board/boardList${pageMaker.makeQuery(idx)}">${idx}</a></li>
+    		</c:forEach>
+
+    		<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+    			<li class="page-item"><a href="${cp}/board/boardList${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
+    		</c:if> 
+  		</ul>
+  		</div>
+  		</div>
+	</div>
+	
     
     <div style="text-align:center;">
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/boardWrite';">글쓰기</button>

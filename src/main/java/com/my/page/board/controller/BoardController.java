@@ -33,9 +33,9 @@ public class BoardController{
 
 	@Inject
 	BoardService boardService;
-
+/*
 	@RequestMapping(value = "/boardPaging", method = RequestMethod.GET)
-	public String list(Model model, Criteria cri) throws Exception{
+	public void list(Model model, Criteria cri) throws Exception{
 		
 		model.addAttribute("list", boardService.list(cri));
 		
@@ -44,17 +44,21 @@ public class BoardController{
 		pageMaker.setTotalCount(boardService.listCount());
 		
 		model.addAttribute("pageMaker", pageMaker);
-		
-		return "/board/boardPaging";
-		
-	}
+			
+	}*/
 	
 	@RequestMapping(value="/boardList", method = RequestMethod.GET)
 	public String boardList( Model model,Criteria cri) throws Exception{
-	
-		List<BoardVo> list = boardService.boardList();
-		model.addAttribute("list",list);
-		model.addAttribute("list",boardService.list(cri));
+		
+		model.addAttribute("list", boardService.list(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(boardService.listCount());
+		
+		model.addAttribute("pageMaker", pageMaker);
+
+
 
 		return "/board/boardList";
 	}
