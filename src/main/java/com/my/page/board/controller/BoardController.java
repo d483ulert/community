@@ -16,6 +16,7 @@ import com.my.page.board.BoardDAO;
 import com.my.page.board.BoardVo;
 import com.my.page.board.Criteria;
 import com.my.page.board.PageMaker;
+import com.my.page.board.SearchCriteria;
 import com.my.page.board.service.BoardServiceImpl;
 
 import ch.qos.logback.classic.Logger;
@@ -33,28 +34,16 @@ public class BoardController{
 
 	@Inject
 	BoardService boardService;
-/*
-	@RequestMapping(value = "/boardPaging", method = RequestMethod.GET)
-	public void list(Model model, Criteria cri) throws Exception{
-		
-		model.addAttribute("list", boardService.list(cri));
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(boardService.listCount());
-		
-		model.addAttribute("pageMaker", pageMaker);
-			
-	}*/
+
 	
 	@RequestMapping(value="/boardList", method = RequestMethod.GET)
-	public String boardList( Model model,Criteria cri) throws Exception{
+	public String boardList( Model model,SearchCriteria scri) throws Exception{
 		
-		model.addAttribute("list", boardService.list(cri));
+		model.addAttribute("list", boardService.list(scri));
 		
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(boardService.listCount());
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(boardService.listCount(scri));
 		
 		model.addAttribute("pageMaker", pageMaker);
 

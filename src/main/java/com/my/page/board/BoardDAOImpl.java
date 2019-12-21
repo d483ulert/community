@@ -41,12 +41,12 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	
 	@Override
-	public List<BoardVo> list(Criteria cri) throws Exception{
-		return sqlSession.selectList("board.selectBoard",cri);
+	public List<BoardVo> list(SearchCriteria scri) throws Exception{
+		return sqlSession.selectList("board.selectBoard",scri);
 	}
 	@Override
-	public int listCount() throws Exception{
-		return sqlSession.selectOne("board.countBoard");
+	public int listCount(SearchCriteria scri) throws Exception{
+		return sqlSession.selectOne("board.countBoard", scri);
 	}
 	
 }

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.my.page.board.BoardDAO;
 import com.my.page.board.BoardVo;
 import com.my.page.board.Criteria;
+import com.my.page.board.SearchCriteria;
 
 @Transactional
 @Service
@@ -43,12 +44,12 @@ public class BoardServiceImpl implements BoardService{
     }
     
     @Override
-    public List<BoardVo> list(Criteria cri) throws Exception{
-    	return boardDao.list(cri);
+    public List<BoardVo> list(SearchCriteria scri) throws Exception{
+    	return boardDao.list(scri);
     }
     @Override
-    public int listCount() throws Exception{
-    	return boardDao.listCount();
+    public int listCount(SearchCriteria scri) throws Exception{
+    	return boardDao.listCount(scri);
     }
     
 

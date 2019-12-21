@@ -24,10 +24,10 @@ public interface BoardDAO {
 	void updateViewCnt(int bno) throws Exception;
 
 	//게시글 목록조회
-	public List<BoardVo> list(Criteria cri) throws Exception;
+	public List<BoardVo> list(SearchCriteria scri) throws Exception;
 	
 	//게시글 총 갯수
-	public int listCount() throws Exception;
+	public int listCount(SearchCriteria scri) throws Exception;
 	
 
 
