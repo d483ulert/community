@@ -41,38 +41,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</delete>
 	
-	<!-- 총 게시글 갯수 출력 -->
-	<select id="countBoard" parameterType="com.my.page.board.SearchCriteria" resultType="int">
-	<![CDATA[
-		select count(bno) from board where 1=1
-		
-		<include refid="search"></include>
-		
-		and bno>0
-	]]>
-	</select>
 	
 	<sql id="search">
 		<if test="searchType !=null"> 
-			<if test="searchType== 't',toString()">and title like '%' || #{keyword} || '%'</if>
+			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'c'.toString()">AND CONTENT LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'w'.toString()">AND WRITER LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (CONTENT LIKE '%' || #{keyword} || '%')</if>
 		</if>
 	</sql>
-	<select id="selectBoard" resultType="com.my.page.board.BoardVo">
+	
+	<!-- 총 게시글 갯수 출력 -->
+	<select id="countBoard" parameterType="com.my.page.board.SearchCriteria" resultType="int">
 	<![CDATA[
-	      select bno, title,writer,regdate,viewcnt 
+		select count(bno) from board where 
+	]]>	
+		<include refid="search"></include>
+	
+	<![CDATA[
+		
+		 bno>0
+	]]>
+	</select>
+	
+	<select id="selectBoard" resultType="com.my.page.board.BoardVo" parameterType="com.my.page.board.SearchCriteria">
+	<![CDATA[
+	      select bno,title,writer,regdate,viewcnt 
          from
             ( select /*+INDEX_DESC(board pk_board)*/
                rownum rn, bno, title, writer,regdate,viewcnt
                from 
                   board
-               where rownum <= #{perPageNum} * #{page}
+               where 
+    ]]>
+		<include refid="search"></include>
+       <![CDATA[
+               rownum <= #{perPageNum} * #{page}
             )
          where rn > (#{perPageNum})*(#{page}-1)
 
-	
 	]]>
 	</select>
 	

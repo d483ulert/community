@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>JS 자유게시판</title>
 <link rel="stylesheet" type="text/css" href="${cp}/resources/css/normal.css" />
-<script src="${cp}/resources/js/js.js"></script>
+<script src="${cp}/resources/js/jquery-3.4.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
@@ -69,7 +69,7 @@
     	<script>
       		$(function(){
         		$('#searchBtn').click(function() {
-          		self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+          		self.location = "boardList" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
         		});
       		});   
     	</script>
