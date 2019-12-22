@@ -54,14 +54,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 총 게시글 갯수 출력 -->
 	<select id="countBoard" parameterType="com.my.page.board.SearchCriteria" resultType="int">
 	<![CDATA[
-		select count(bno) from board where 
+		select count(bno) from board where bno>0
+		
 	]]>	
 		<include refid="search"></include>
 	
-	<![CDATA[
-		
-		 bno>0
-	]]>
 	</select>
 	
 	<select id="selectBoard" resultType="com.my.page.board.BoardVo" parameterType="com.my.page.board.SearchCriteria">
@@ -73,14 +70,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                from 
                   board
                where 
-    ]]>
-		<include refid="search"></include>
-       <![CDATA[
                rownum <= #{perPageNum} * #{page}
             )
          where rn > (#{perPageNum})*(#{page}-1)
-
+	
 	]]>
+			<include refid="search"></include>
+	
 	</select>
 	
 
