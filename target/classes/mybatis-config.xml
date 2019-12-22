@@ -6,8 +6,10 @@
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
+	
 	<typeAliases>
 		<package name="com.my.page.board" />
+		<package name="com.my.page.reply" />
 	</typeAliases>
 
 </configuration>

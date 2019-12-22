@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="board">
 
-	<select id="boardList" resultType="com.my.page.board.BoardVo">
+	<select id="boardList" resultType="com.my.page.board.BoardVO">
 		select bno
 			  ,title
 			  ,writer
@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
 
    	
-   	<select id="boardRead" resultType="com.my.page.board.BoardVo">
+   	<select id="boardRead" resultType="com.my.page.board.BoardVO">
    		select bno
    		,title
    		,writer
@@ -61,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
-	<select id="selectBoard" resultType="com.my.page.board.BoardVo" parameterType="com.my.page.board.SearchCriteria">
+	<select id="selectBoard" resultType="com.my.page.board.BoardVO" parameterType="com.my.page.board.SearchCriteria">
 	<![CDATA[
 	      select bno,title,writer,regdate,viewcnt 
          from

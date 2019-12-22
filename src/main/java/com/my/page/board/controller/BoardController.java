@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.my.page.board.BoardDAO;
-import com.my.page.board.BoardVo;
+import com.my.page.board.BoardVO;
 import com.my.page.board.Criteria;
 import com.my.page.board.PageMaker;
 import com.my.page.board.SearchCriteria;
 import com.my.page.board.service.BoardServiceImpl;
+import com.my.page.reply.ReplyVO;
+import com.my.page.reply.service.ReplyService;
 
 import ch.qos.logback.classic.Logger;
 
@@ -34,6 +36,8 @@ public class BoardController{
 
 	@Inject
 	BoardService boardService;
+	@Inject
+	ReplyService replyService;
 
 	
 	@RequestMapping(value="/boardList", method = RequestMethod.GET)
@@ -59,28 +63,31 @@ public class BoardController{
 	}
 
     @RequestMapping(value="boardWrite", method=RequestMethod.POST)
-	public String boardWriter(BoardVo bdto) throws Exception{
+	public String boardWriter(BoardVO bdto) throws Exception{
 		boardService.writerBoard(bdto);
 		return "redirect:/board/boardList";
 	}
     
     @RequestMapping(value="boardRead", method=RequestMethod.GET)
-    public String boardRead(@RequestParam int bno, Model model) throws Exception{
-    	BoardVo data = boardService.boardRead(bno);
+    public String boardRead(@RequestParam int bno, Model model,BoardVO boardVO) throws Exception{
+    	BoardVO data = boardService.boardRead(bno);
     	model.addAttribute("data",data);
+    	
+    	List<ReplyVO> replyList = replyService.readReply(boardVO.getBno());
+    	model.addAttribute("replyList",replyList);
     	return"/board/boardRead";	
     }
     
     @RequestMapping(value="updatepage", method=RequestMethod.GET)
     public String boardUpdate(@RequestParam int bno, Model model) throws Exception{
-    	BoardVo data = boardService.boardRead(bno);
+    	BoardVO data = boardService.boardRead(bno);
     	model.addAttribute("data",data);
     	return "/board/boardUpdate";
     	
     }
     
     @RequestMapping(value="boardUpdate", method=RequestMethod.POST)
-    public String boardUpdatedo(BoardVo bdto) throws Exception {
+    public String boardUpdatedo(BoardVO bdto) throws Exception {
     	boardService.updateBoard(bdto);
     	return "redirect:/board/boardList"; 
     }

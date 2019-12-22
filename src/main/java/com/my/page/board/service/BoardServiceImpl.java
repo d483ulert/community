@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.my.page.board.BoardDAO;
-import com.my.page.board.BoardVo;
+import com.my.page.board.BoardVO;
 import com.my.page.board.Criteria;
 import com.my.page.board.SearchCriteria;
 
@@ -18,23 +18,23 @@ public class BoardServiceImpl implements BoardService{
 	BoardDAO boardDao;
     
 	@Override
-    public List<BoardVo> boardList() throws Exception {
+    public List<BoardVO> boardList() throws Exception {
         return boardDao.boardList(); 
     }
 
 	@Override
-	public void writerBoard(BoardVo bdto) throws Exception{
+	public void writerBoard(BoardVO bdto) throws Exception{
 		boardDao.writerBoard(bdto);
 	}
 	
     @Override
-    public BoardVo boardRead(int bno) throws Exception {
+    public BoardVO boardRead(int bno) throws Exception {
     	boardDao.updateViewCnt(bno);
         return boardDao.boardRead(bno);
     }
     
     @Override
-    public void updateBoard(BoardVo bdto) throws Exception{
+    public void updateBoard(BoardVO bdto) throws Exception{
     	boardDao.boardUpdate(bdto);
     }
     
@@ -44,7 +44,7 @@ public class BoardServiceImpl implements BoardService{
     }
     
     @Override
-    public List<BoardVo> list(SearchCriteria scri) throws Exception{
+    public List<BoardVO> list(SearchCriteria scri) throws Exception{
     	return boardDao.list(scri);
     }
     @Override
