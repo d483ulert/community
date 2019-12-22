@@ -40,7 +40,7 @@
 
 	<div class="container">
  		<form name="bdto" method="post" action="${cp}/board/boardWrite">
- 			<table class="table table-hover">
+ 			<table class="table table-borderd">
  				<tr>
  					<th>제목 <input name="title" id="title" size="10" placeholder="제목"></th>
  			 		

@@ -39,7 +39,7 @@
 </nav>
 <div class="container">
    <form name="updateform" method="POST" action="${cp}/board/boardUpdate">
-      	<table class="table table-hover">
+      	<table class="table table-borderd">
       			<tr>
       				<th>번호:<input name="bno" value="${data.bno}" type="text" readonly="readonly"/></th>
       			</tr>

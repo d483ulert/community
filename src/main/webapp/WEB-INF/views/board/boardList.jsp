@@ -32,7 +32,7 @@
 </nav>
 <div class="container">
 
-	<table class="table table-hover" >
+	<table class="table table-borderd" >
         <tr>
             <th>번호</th>
             <th>제목</th>
