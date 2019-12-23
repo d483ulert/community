@@ -42,6 +42,7 @@ public class BoardController{
 	ReplyService replyService;
 
 	
+	//게시판 목록
 	@RequestMapping(value="/boardList", method = RequestMethod.GET)
 	public String boardList( Model model,SearchCriteria scri) throws Exception{
 		
@@ -58,7 +59,7 @@ public class BoardController{
 		return "/board/boardList";
 	}
 
-	
+    // 게시글 쓰기	
 	@RequestMapping("/boardWrite")
 	public String boardWrite(Model model)throws Exception {
 		return "/board/boardWrite";
@@ -70,6 +71,7 @@ public class BoardController{
 		return "redirect:/board/boardList";
 	}
     
+    // 게시글 읽기
     @RequestMapping(value="boardRead", method=RequestMethod.GET)
     public String boardRead(@RequestParam int bno, Model model,BoardVO boardVO) throws Exception{
     	BoardVO data = boardService.boardRead(bno);
@@ -80,6 +82,7 @@ public class BoardController{
     	return"/board/boardRead";	
     }
     
+    //게시글 수정
     @RequestMapping(value="updatepage", method=RequestMethod.GET)
     public String boardUpdate(@RequestParam int bno, Model model) throws Exception{
     	BoardVO data = boardService.boardRead(bno);
@@ -93,12 +96,15 @@ public class BoardController{
     	boardService.updateBoard(bdto);
     	return "redirect:/board/boardList"; 
     }
+    
+    //게시판 삭제
     @RequestMapping(value="delete",method=RequestMethod.GET)
     public String boardDelete(@RequestParam int bno) throws Exception{
     	boardService.deleteBoard(bno);
     	return "redirect:/board/boardList"; 
     }
     
+    //댓글 쓰기
 	@RequestMapping(value="replyWrite", method = RequestMethod.POST)
 	public String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		
@@ -114,13 +120,14 @@ public class BoardController{
 				
 	}
 	
+	//댓글 수정 GET
 	@RequestMapping(value="/replyUpdateView", method = RequestMethod.GET)
 	public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
 		
 		model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
 		model.addAttribute("scri", scri);
 		
-		return "board/replyUpdateView";
+		return "/board/replyUpdateView";
 	}
 	
 	//댓글 수정 POST
@@ -146,7 +153,7 @@ public class BoardController{
 			model.addAttribute("scri", scri);
 			
 
-			return "board/replyDeleteView";
+			return "/board/replyDeleteView";
 		}
 		
 		//댓글 삭제
