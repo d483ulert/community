@@ -99,7 +99,7 @@ public class BoardController{
     	return "redirect:/board/boardList"; 
     }
     
-	@RequestMapping(value="/replyWrite", method = RequestMethod.POST)
+	@RequestMapping(value="replyWrite", method = RequestMethod.POST)
 	public String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		
 		replyService.writeReply(vo);
@@ -110,7 +110,58 @@ public class BoardController{
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
 		
-		return "redirect:/board/boardRead";
+    	return "redirect:/board/boardRead";
 				
 	}
+	
+	@RequestMapping(value="/replyUpdateView", method = RequestMethod.GET)
+	public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+		
+		model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
+		model.addAttribute("scri", scri);
+		
+		return "board/replyUpdateView";
+	}
+	
+	//댓글 수정 POST
+	@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
+	public String replyUpdate(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		
+		replyService.updateReply(vo);
+		
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		
+    	return "redirect:/board/boardRead";
+	}
+	
+		//댓글 삭제 GET
+		@RequestMapping(value="/replyDeleteView", method = RequestMethod.GET)
+		public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+			
+			model.addAttribute("replyDelete", replyService.selectReply(vo.getRno()));
+			model.addAttribute("scri", scri);
+			
+
+			return "board/replyDeleteView";
+		}
+		
+		//댓글 삭제
+		@RequestMapping(value="/replyDelete", method = RequestMethod.POST)
+		public String replyDelete(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+			
+			replyService.deleteReply(vo);
+			
+			rttr.addAttribute("bno", vo.getBno());
+			rttr.addAttribute("page", scri.getPage());
+			rttr.addAttribute("perPageNum", scri.getPerPageNum());
+			rttr.addAttribute("searchType", scri.getSearchType());
+			rttr.addAttribute("keyword", scri.getKeyword());
+			
+			return "redirect:/board/readRead";
+		}
+
 }

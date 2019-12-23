@@ -26,6 +26,21 @@
 		</ul>
 	</div>
 </nav>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var formObj = $("form[name='updateForm']");
+			
+			$(".cancel_btn").on("click", function(){
+				location.href = "/board/readView?bno=${replyDelete.bno}"
+					   + "&page=${scri.page}"
+					   + "&perPageNum=${scri.perPageNum}"
+					   + "&searchType=${scri.searchType}"
+					   + "&keyword=${scri.keyword}";
+			})
+			
+		})
+		
+	</script>
 <div class="container">
 	<table class="table table-borderd">
 		<tr>
@@ -56,50 +71,23 @@
       			</li>
     		</c:forEach>   
 	</div>
-	<form name="replyForm" method="post">
-  		<input type="hidden" id="bno" name="bno" value="${read.bno}" />
-  		<input type="hidden" id="page" name="page" value="${scri.page}"> 
-  		<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
-  		<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
-  		<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
-	<div>
-    	<label for="writer">${member.memId}</label><input type="hidden" name="writer" id="writer" value="${member.memId}">
-    <br/>
-    	<label for="content">내용</label><input type="text" id="content" name="content" />
-  	</div>
-  	<div>
- 	 	<button type="button" class="btn btn-Light" id="replyWriteBtn">작성</button>
-  	</div>
-	</form>
+		<section id="container">
+				<form name="updateForm" role="form" method="post" action="/board/replyDelete">
+					<input type="hidden" name="bno" value="${replyDelete.bno}" readonly="readonly"/>
+					<input type="hidden" id="rno" name="rno" value="${replyDelete.rno}" />
+					<input type="hidden" id="page" name="page" value="${scri.page}"> 
+					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
+					<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
+					<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
+						
+					<div>
+						<p>삭제 하시겠습니까?</p>
+						<button type="submit" class="delete_btn">예 삭제합니다.</button>
+						<button type="button" class="cancel_btn">아니오. 삭제하지 않습니다.</button>
+					</div>
+				</form>
+			</section>
 
-	<script type="text/javascript">
-	//댓글 C
-	$("#replyWriteBtn").on("click", function(){
-  		var formObj = $("form[name='replyForm']");
-  			formObj.attr("action", "board/replyWrite");
-  			formObj.submit();
-	});
-	
-	//댓글 U
-	$(".replyUpdateBtn").on("click", function(){
-		location.href = "/board/replyUpdateView?bno=${read.bno}"
-						+ "&page=${scri.page}"
-						+ "&perPageNum=${scri.perPageNum}"
-						+ "&searchType=${scri.searchType}"
-						+ "&keyword=${scri.keyword}"
-						+ "&rno="+$(this).attr("data-rno");
-	});
-			
-	//댓글 D
-	$(".replyDeleteBtn").on("click", function(){
-		location.href = "/board/replyDeleteView?bno=${read.bno}"
-			+ "&page=${scri.page}"
-			+ "&perPageNum=${scri.perPageNum}"
-			+ "&searchType=${scri.searchType}"
-			+ "&keyword=${scri.keyword}"
-			+ "&rno="+$(this).attr("data-rno");
-	});
-	</script>
 	
 	<div style="text-align:center;">
 	<c:if test="${member.memId == data.writer}">

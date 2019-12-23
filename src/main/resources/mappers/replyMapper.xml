@@ -27,4 +27,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 
+	<update id="updateReply" parameterType="com.my.page.reply.ReplyVO">
+		update reply set content =#{content} where rno=#{rno}
+
+	</update>
+	
+	<delete id="deleteReply" parameterType="com.my.page.reply.ReplyVO">
+		delete from reply where rno=#{rno}
+	</delete>
+	
+	<select id="selectReply" resultType="com.my.page.reply.ReplyVO">
+		select bno,
+			   rno,
+			   content,
+			   writer,
+			   regdate 
+		from reply
+		where rno = #{rno}
+			   
+	</select>
 </mapper>
