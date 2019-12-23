@@ -106,7 +106,7 @@ public class BoardController{
     
     //댓글 쓰기
 	@RequestMapping(value="replyWrite", method = RequestMethod.POST)
-	public String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+	public String replyWrite(@ModelAttribute("ReplyVO") ReplyVO vo,SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		
 		replyService.writeReply(vo);
 		
@@ -122,7 +122,7 @@ public class BoardController{
 	
 	//댓글 수정 GET
 	@RequestMapping(value="/replyUpdateView", method = RequestMethod.GET)
-	public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+	public String replyUpdateView(@ModelAttribute("ReplyVO") ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
 		
 		model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
 		model.addAttribute("scri", scri);
@@ -132,7 +132,7 @@ public class BoardController{
 	
 	//댓글 수정 POST
 	@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
-	public String replyUpdate(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+	public String replyUpdate(@ModelAttribute("ReplyVO") ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		
 		replyService.updateReply(vo);
 		
@@ -147,7 +147,7 @@ public class BoardController{
 	
 		//댓글 삭제 GET
 		@RequestMapping(value="/replyDeleteView", method = RequestMethod.GET)
-		public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+		public String replyDeleteView(@ModelAttribute("ReplyVO") ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
 			
 			model.addAttribute("replyDelete", replyService.selectReply(vo.getRno()));
 			model.addAttribute("scri", scri);
@@ -158,7 +158,7 @@ public class BoardController{
 		
 		//댓글 삭제
 		@RequestMapping(value="/replyDelete", method = RequestMethod.POST)
-		public String replyDelete(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		public String replyDelete(@ModelAttribute("ReplyVO") ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 			
 			replyService.deleteReply(vo);
 			
@@ -168,7 +168,7 @@ public class BoardController{
 			rttr.addAttribute("searchType", scri.getSearchType());
 			rttr.addAttribute("keyword", scri.getKeyword());
 			
-			return "redirect:/board/readRead";
+			return "redirect:/board/boardRead";
 		}
 
 }
