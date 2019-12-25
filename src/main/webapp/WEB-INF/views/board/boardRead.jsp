@@ -56,7 +56,7 @@
       			</li>
     		</c:forEach>   
 	</div>
-	<form name="replyForm" method="post">
+	<form name="replyForm" method="POST">
   		<input type="hidden" id="bno" name="bno" value="${read.bno}" />
   		<input type="hidden" id="page" name="page" value="${scri.page}"> 
   		<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
@@ -68,37 +68,41 @@
     	<label for="content">내용</label><input type="text" id="content" name="content" />
   	</div>
   	<div>
- 	 	<button type="button" class="btn btn-Light" id="replyWriteBtn">작성</button>
+ 	 	<button type="button" class="replyWriteBtn" id="replyWriteBtn">작성</button>
   	</div>
 	</form>
 
 	<script type="text/javascript">
-	//댓글 C
-	$("#replyWriteBtn").on("click", function(){
-  		var formObj = $("form[name='replyForm']");
-  			formObj.attr("action", "board/replyWrite");
-  			formObj.submit();
-	});
-	
-	//댓글 U
-	$(".replyUpdateBtn").on("click", function(){
-		location.href = "/board/replyUpdateView?bno=${read.bno}"
-						+ "&page=${scri.page}"
-						+ "&perPageNum=${scri.perPageNum}"
-						+ "&searchType=${scri.searchType}"
-						+ "&keyword=${scri.keyword}"
-						+ "&rno="+$(this).attr("data-rno");
-	});
-			
-	//댓글 D
-	$(".replyDeleteBtn").on("click", function(){
-		location.href = "/board/replyDeleteView?bno=${read.bno}"
-			+ "&page=${scri.page}"
-			+ "&perPageNum=${scri.perPageNum}"
-			+ "&searchType=${scri.searchType}"
-			+ "&keyword=${scri.keyword}"
-			+ "&rno="+$(this).attr("data-rno");
-	});
+		//댓글 C
+			$(".replyWriteBtn").on("click", function(){
+				var formObj = $("form[name='replyForm']");
+				formObj.attr("action","/page/board/replyWrite");
+				formObj.submit();
+			});
+
+		//댓글 U
+		$(".replyUpdateBtn").on(
+				"click",
+				function() {
+					location.href = "/board/replyUpdateView?bno=${read.bno}"
+							+ "&page=${scri.page}"
+							+ "&perPageNum=${scri.perPageNum}"
+							+ "&searchType=${scri.searchType}"
+							+ "&keyword=${scri.keyword}" + "&rno="
+							+ $(this).attr("data-rno");
+				});
+
+		//댓글 D
+		$(".replyDeleteBtn").on(
+				"click",
+				function() {
+					location.href = "/board/replyDeleteView?bno=${read.bno}"
+							+ "&page=${scri.page}"
+							+ "&perPageNum=${scri.perPageNum}"
+							+ "&searchType=${scri.searchType}"
+							+ "&keyword=${scri.keyword}" + "&rno="
+							+ $(this).attr("data-rno");
+				});
 	</script>
 	
 	<div style="text-align:center;">

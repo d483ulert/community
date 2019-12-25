@@ -79,7 +79,7 @@ public class BoardController{
     	
     	List<ReplyVO> replyList = replyService.readReply(boardVO.getBno());
     	model.addAttribute("replyList",replyList);
-    	return"/board/boardRead";	
+    	return "/board/boardRead";	
     }
     
     //게시글 수정
@@ -105,9 +105,9 @@ public class BoardController{
     }
     
     //댓글 쓰기
-	@RequestMapping(value="replyWrite", method = RequestMethod.POST)
+	@RequestMapping(value="/replyWrite", method = RequestMethod.POST)
 	public String replyWrite(@ModelAttribute("ReplyVO") ReplyVO vo,SearchCriteria scri, RedirectAttributes rttr) throws Exception {
-		
+
 		replyService.writeReply(vo);
 		
 		rttr.addAttribute("bno", vo.getBno());
@@ -117,6 +117,7 @@ public class BoardController{
 		rttr.addAttribute("keyword", scri.getKeyword());
 		
     	return "redirect:/board/boardRead";
+
 				
 	}
 	
