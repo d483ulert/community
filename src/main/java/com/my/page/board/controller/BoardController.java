@@ -108,9 +108,11 @@ public class BoardController{
     
     //댓글 쓰기
 	@RequestMapping(value="/replyWrite", method = RequestMethod.POST)
-	public String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+	public String replyWrite(ReplyVO vo, SearchCriteria scri,Model model,RedirectAttributes rttr) throws Exception {
 		logger.info("reply Write");
 		replyService.writeReply(vo);
+    	model.addAttribute("scri",scri);
+
 		
 		rttr.addAttribute("bno", vo.getBno());
 		rttr.addAttribute("page", scri.getPage());
@@ -118,10 +120,7 @@ public class BoardController{
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
 		
-		
     	return "redirect:/board/boardRead";
-
-				
 	}
 	
 	//댓글 수정 GET
