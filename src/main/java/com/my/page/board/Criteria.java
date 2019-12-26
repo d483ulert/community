@@ -1,6 +1,5 @@
 package com.my.page.board;
-import lombok.Getter;
-@Getter
+
 public class Criteria {
 	
 	private int page;
@@ -40,5 +39,22 @@ public class Criteria {
 	public int getPerPageNum() {
 		return this.perPageNum;
 	}
-}
 	
+	public int getRowStart() {
+		rowStart = ((page - 1) * perPageNum) + 1;
+		return rowStart;
+	}
+	
+	public int getRowEnd() {
+		rowEnd = rowStart + perPageNum - 1;
+		return rowEnd;
+	}
+
+	@Override
+	public String toString() {
+		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", rowStart=" + rowStart + ", rowEnd=" + rowEnd
+				+ "]";
+	}
+	
+	
+}	

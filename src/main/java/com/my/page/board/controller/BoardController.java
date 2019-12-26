@@ -2,8 +2,11 @@ package com.my.page.board.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,14 +26,13 @@ import com.my.page.board.service.BoardServiceImpl;
 import com.my.page.reply.ReplyVO;
 import com.my.page.reply.service.ReplyService;
 
-import ch.qos.logback.classic.Logger;
-
 import com.my.page.board.service.BoardService;
 
 @Controller
 @RequestMapping("/board")
 public class BoardController{
-	
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+
 	@ModelAttribute("cp")
 	public String getContextPath(HttpServletRequest request) {
 		return request.getContextPath();
@@ -44,7 +46,7 @@ public class BoardController{
 	
 	//게시판 목록
 	@RequestMapping(value="/boardList", method = RequestMethod.GET)
-	public String boardList( Model model,SearchCriteria scri) throws Exception{
+	public String boardList(Model model,SearchCriteria scri) throws Exception{
 		
 		model.addAttribute("list", boardService.list(scri));
 		
@@ -99,15 +101,15 @@ public class BoardController{
     
     //게시판 삭제
     @RequestMapping(value="delete",method=RequestMethod.GET)
-    public String boardDelete(@RequestParam int bno) throws Exception{
+    public String boardDelete(@RequestParam int bno ) throws Exception{
     	boardService.deleteBoard(bno);
     	return "redirect:/board/boardList"; 
     }
     
     //댓글 쓰기
 	@RequestMapping(value="/replyWrite", method = RequestMethod.POST)
-	public String replyWrite(@ModelAttribute("ReplyVO") ReplyVO vo,SearchCriteria scri, RedirectAttributes rttr) throws Exception {
-
+	public String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		logger.info("reply Write");
 		replyService.writeReply(vo);
 		
 		rttr.addAttribute("bno", vo.getBno());
@@ -116,6 +118,7 @@ public class BoardController{
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
 		
+		
     	return "redirect:/board/boardRead";
 
 				
@@ -123,7 +126,7 @@ public class BoardController{
 	
 	//댓글 수정 GET
 	@RequestMapping(value="/replyUpdateView", method = RequestMethod.GET)
-	public String replyUpdateView(@ModelAttribute("ReplyVO") ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+	public String replyUpdateView( ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
 		
 		model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
 		model.addAttribute("scri", scri);
@@ -133,7 +136,7 @@ public class BoardController{
 	
 	//댓글 수정 POST
 	@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
-	public String replyUpdate(@ModelAttribute("ReplyVO") ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+	public String replyUpdate(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		
 		replyService.updateReply(vo);
 		
@@ -148,7 +151,7 @@ public class BoardController{
 	
 		//댓글 삭제 GET
 		@RequestMapping(value="/replyDeleteView", method = RequestMethod.GET)
-		public String replyDeleteView(@ModelAttribute("ReplyVO") ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+		public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
 			
 			model.addAttribute("replyDelete", replyService.selectReply(vo.getRno()));
 			model.addAttribute("scri", scri);
@@ -159,7 +162,7 @@ public class BoardController{
 		
 		//댓글 삭제
 		@RequestMapping(value="/replyDelete", method = RequestMethod.POST)
-		public String replyDelete(@ModelAttribute("ReplyVO") ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		public String replyDelete(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 			
 			replyService.deleteReply(vo);
 			
