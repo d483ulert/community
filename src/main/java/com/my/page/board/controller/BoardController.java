@@ -46,7 +46,7 @@ public class BoardController{
 	
 	//게시판 목록
 	@RequestMapping(value="/boardList", method = RequestMethod.GET)
-	public String boardList(Model model,SearchCriteria scri) throws Exception{
+	public String boardList(Model model,@ModelAttribute("scri")SearchCriteria scri) throws Exception{
 		
 		model.addAttribute("list", boardService.list(scri));
 		
@@ -75,20 +75,31 @@ public class BoardController{
     
     // 게시글 읽기
     @RequestMapping(value="boardRead", method=RequestMethod.GET)
-    public String boardRead(@RequestParam int bno, Model model,BoardVO boardVO) throws Exception{
+    public String boardRead(BoardVO boardVO,@RequestParam int bno, Model model,
+    		@ModelAttribute("scri") SearchCriteria scri) throws Exception{
     	BoardVO data = boardService.boardRead(bno);
     	model.addAttribute("data",data);
-    	
+		model.addAttribute("scri", scri);
+
     	List<ReplyVO> replyList = replyService.readReply(boardVO.getBno());
+
     	model.addAttribute("replyList",replyList);
+
     	return "/board/boardRead";	
     }
     
     //게시글 수정
     @RequestMapping(value="updatepage", method=RequestMethod.GET)
-    public String boardUpdate(@RequestParam int bno, Model model) throws Exception{
+    public String boardUpdate(@RequestParam int bno, Model model,
+    		@ModelAttribute("scri") SearchCriteria scri,RedirectAttributes rttr) throws Exception{
     	BoardVO data = boardService.boardRead(bno);
     	model.addAttribute("data",data);
+		
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+
     	return "/board/boardUpdate";
     	
     }
@@ -101,17 +112,23 @@ public class BoardController{
     
     //게시판 삭제
     @RequestMapping(value="delete",method=RequestMethod.GET)
-    public String boardDelete(@RequestParam int bno ) throws Exception{
+    public String boardDelete(@RequestParam int bno,
+    		@ModelAttribute("scri")SearchCriteria scri,RedirectAttributes rttr ) throws Exception{
     	boardService.deleteBoard(bno);
+    	
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+
     	return "redirect:/board/boardList"; 
     }
     
     //댓글 쓰기
 	@RequestMapping(value="/replyWrite", method = RequestMethod.POST)
-	public String replyWrite(ReplyVO vo, SearchCriteria scri,Model model,RedirectAttributes rttr) throws Exception {
+	public String replyWrite(ReplyVO vo, @ModelAttribute("scri")SearchCriteria scri,RedirectAttributes rttr) throws Exception {
 		logger.info("reply Write");
 		replyService.writeReply(vo);
-    	model.addAttribute("scri",scri);
 
 		
 		rttr.addAttribute("bno", vo.getBno());

@@ -43,10 +43,11 @@
 						      +"&perPageNum=${scri.perPageNum}"
 						      +"&searchType=${scri.searchType}&keyword=${scri.keyword}";
 			})
+
 			
 			$(".replyWriteBtn").on("click", function(){
 				var formObj = $("form[name='replyForm']");
-				formObj.attr("action", "/page/board/replyWrite");
+				formObj.attr("action", "replyWrite");
 				formObj.submit();
 			});
 			

@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>글쓰기</title>
 <link rel="stylesheet" type="text/css" href="${cp}/resources/css/normal.css" />
-<script src="${cp}/resources/js/js.js"></script>
+<script src="${cp}/resources/js/jquery-3.4.1.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="${cp}/resources/ckeditor/ckeditor.js"></script>
 
