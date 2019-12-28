@@ -75,58 +75,57 @@
         </tr>
     </table>
    </div>
-   <div id="container">
-    		<c:forEach items="${replyList}" var="replyList">
-      			<li>
-        			<p>
-        			작성자 : ${replyList.writer}<br />
-        			작성 날짜 :  <fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-        			</p>
-        			<p>${replyList.content}</p>
-        			
-        				<div>
-  							<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
-  							<button type="button" class="replyDeleteBtn" data-rno="${replyList.rno}">삭제</button>
-						</div>
-      			</li>
-    		</c:forEach>   
-	</div>
-	<form name="replyForm" method="POST">
-		<input type="hidden" id="bno" name="bno" value="${data.bno}" /> 
-		<input type="hidden" id="page" name="page" value="${scri.page}"> 
-		<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
-		<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}">
-		<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}">
-		
-		<div class="form-group">
-			<label for="writer" class="col-sm-2 control-label">${member.memId}</label>
-			<div class="col-sm-10">
-				 <input type="hidden" name="writer" id="writer" value="${member.memId}">
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label for="content" class="col-sm-2 control-label">댓글 내용</label>
-			<div class="col-sm-10">
-				<input type="text" id="content" name="content" class="form-control" />
-			</div>
-		</div>
-
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="button" class="replyWriteBtn btn btn-success">작성</button>
-			</div>
-		</div>
-	</form>
-<br>
-
-
-	<div style="text-align:center;">
+   	<div style="text-align:center;">
 	<c:if test="${member.memId == data.writer}">
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/updatepage?bno=${data.bno}';">수정</button>
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/delete?bno=${data.bno}';">삭제</button>
 	</c:if>
 		<button class="btn btn-Light" onclick="location.href='${cp}/board/boardList';">글목록</button>
 	</div>
+	<br><br><br><br><br>
+   <div class="container">
+    	<c:forEach items="${replyList}" var="replyList">
+      		<ol>
+      			<li>
+      				<div style="border:1px solid gainsboro";>
+        				<p>
+        				<mark>작성자 : ${replyList.writer}</mark> 
+        			 	날짜: <fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+        				</p>
+        				<p>${replyList.content}</p>
+        			</div>
+        			<div style="text-align:center;">
+  						<button type="button" class="replyUpdateBtn btn btn-Light" data-rno="${replyList.rno}">수정</button>
+  						<button type="button" class="replyDeleteBtn btn btn-Light" data-rno="${replyList.rno}">삭제</button>
+					</div>
+      			</li>
+      		</ol>
+    	</c:forEach>   
+	</div>
+	<form name="replyForm" method="POST">
+		<input type="hidden" id="bno" name="bno" value="${data.bno}" /> <input
+			type="hidden" id="page" name="page" value="${scri.page}"> <input
+			type="hidden" id="perPageNum" name="perPageNum"
+			value="${scri.perPageNum}"> <input type="hidden"
+			id="searchType" name="searchType" value="${scri.searchType}">
+		<input type="hidden" id="keyword" name="keyword"
+			value="${scri.keyword}">
+
+		<div class="container">
+			<label for="writer">${member.memId}</label>
+			<div>
+				<input type="hidden" name="writer" id="writer"value="${member.memId}">
+
+				<input type="text" id="content" name="content" class="form-control" />
+			</div>
+			<br>
+			<div style="text-align:center;">
+				<button type="button" class="replyWriteBtn btn btn-Light">작성</button>
+			</div>
+		</div>
+
+	</form>
+
+
 </body>
 </html>
