@@ -17,7 +17,7 @@ public class ReplyDaoImpl implements ReplyDao {
 	
 	@Override
 	public void writeReply(ReplyVO vo) throws Exception{
-		sqlSession.insert("reply.writerreply",vo);
+		sqlSession.insert("reply.writeReply",vo);
 	}
 	
 	@Override

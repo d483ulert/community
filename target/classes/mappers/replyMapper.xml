@@ -15,13 +15,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where bno = #{bno}
 	</select>
 
-	<insert id="writerReply">
+	<insert id="writeReply">
 		insert into reply (bno,
 						   rno,
 						   content,
 						   writer) 
 			values( #{bno},
-					#{reply_seq.nextval},
+					reply_seq.nextval,
 					#{content},
 					#{writer})
 	
