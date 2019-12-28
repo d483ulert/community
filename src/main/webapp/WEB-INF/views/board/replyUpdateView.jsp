@@ -41,23 +41,8 @@
 		})
 		
 	</script>
-	<div class="container">
-		<table class="table table-borderd">
-			<tr>
-				<th>${data.bno}</th>
-				<th>${data.title}</th>
-				<th>${data.writer}</th>
-				<th><fmt:formatDate value="${data.regdate}"
-						pattern="yyyy-MM-dd HH:mm:ss" /></th>
-				<th>${data.viewcnt}</th>
-			</tr>
-			<tr>
-				<td colspan="5">${data.content}</td>
-			</tr>
-		</table>
-	</div>
 
-	<section id="container">
+	<section style="text-align:center;">
 		<form name="updateForm" role="form" method="post" action="replyUpdate">
 			<input type="hidden" name="bno" value="${replyUpdate.bno}" readonly="readonly"/>
 			<input type="hidden" id="rno" name="rno" value="${replyUpdate.rno}" />
@@ -69,7 +54,8 @@
 				<tbody>
 					<tr>
 						<td>
-							<label for="content">댓글 내용</label><input type="text" id="content" name="content" value="${replyUpdate.content}"/>
+							<label for="content">댓글 내용</label>
+							<input type="text" id="content" name="content" value="${replyUpdate.content}" size="200"/>
 						</td>
 					</tr>	
 							

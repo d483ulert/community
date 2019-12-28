@@ -44,7 +44,7 @@
 	</script>
 
 
-	<section id="container">
+	<section style="text-align:center;">
 		<form name="updateForm" role="form" method="post" action="replyDelete">
 			<input type="hidden" name="bno" value="${replyDelete.bno}" readonly="readonly"/>
 			<input type="hidden" id="rno" name="rno" value="${replyDelete.rno}" />
