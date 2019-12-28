@@ -142,7 +142,7 @@ public class BoardController{
 	
 	//댓글 수정 GET
 	@RequestMapping(value="/replyUpdateView", method = RequestMethod.GET)
-	public String replyUpdateView( ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+	public String replyUpdateView( ReplyVO vo, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
 		
 		model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
 		model.addAttribute("scri", scri);
@@ -152,7 +152,7 @@ public class BoardController{
 	
 	//댓글 수정 POST
 	@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
-	public String replyUpdate(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+	public String replyUpdate(ReplyVO vo,@ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		
 		replyService.updateReply(vo);
 		
@@ -167,7 +167,7 @@ public class BoardController{
 	
 		//댓글 삭제 GET
 		@RequestMapping(value="/replyDeleteView", method = RequestMethod.GET)
-		public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+		public String replyDeleteView(ReplyVO vo,@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
 			
 			model.addAttribute("replyDelete", replyService.selectReply(vo.getRno()));
 			model.addAttribute("scri", scri);
@@ -178,7 +178,7 @@ public class BoardController{
 		
 		//댓글 삭제
 		@RequestMapping(value="/replyDelete", method = RequestMethod.POST)
-		public String replyDelete(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		public String replyDelete(ReplyVO vo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 			
 			replyService.deleteReply(vo);
 			

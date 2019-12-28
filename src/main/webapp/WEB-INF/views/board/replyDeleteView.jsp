@@ -32,7 +32,7 @@
 			var formObj = $("form[name='updateForm']");
 			
 			$(".cancel_btn").on("click", function(){
-				location.href = "/board/boardRead?bno=${replyDelete.bno}"
+				location.href = "boardRead?bno=${replyDelete.bno}"
 					   + "&page=${scri.page}"
 					   + "&perPageNum=${scri.perPageNum}"
 					   + "&searchType=${scri.searchType}"
@@ -42,56 +42,24 @@
 		})
 		
 	</script>
-	<div class="container">
-		<table class="table table-borderd">
-			<tr>
-				<th>${data.bno}</th>
-				<th>${data.title}</th>
-				<th>${data.writer}</th>
-				<th><fmt:formatDate value="${data.regdate}"
-						pattern="yyyy-MM-dd HH:mm:ss" /></th>
-				<th>${data.viewcnt}</th>
-			</tr>
-			<tr>
-				<td colspan="5">${data.content}</td>
-			</tr>
-		</table>
-	</div>
-	<div id="container">
-		<c:forEach items="${replyList}" var="replyList">
-			<li>
-				<p>
-					작성자 : ${replyList.writer}<br /> 작성 날짜 :
-					<fmt:formatDate value="${replyList.regdate}"
-						pattern="yyyy-MM-dd HH:mm:ss" />
-				</p>
-				<p>${replyList.content}</p>
 
-				<div>
-					<button type="button" class="replyUpdateBtn"
-						data-rno="${replyList.rno}">수정</button>
-					<button type="button" class="replyDeleteBtn"
-						data-rno="${replyList.rno}">삭제</button>
-				</div>
-			</li>
-		</c:forEach>
-	</div>
+
 	<section id="container">
-				<form name="updateForm" role="form" method="post" action="/board/replyDelete">
-					<input type="hidden" name="bno" value="${replyDelete.bno}" readonly="readonly"/>
-					<input type="hidden" id="rno" name="rno" value="${replyDelete.rno}" />
-					<input type="hidden" id="page" name="page" value="${scri.page}"> 
-					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
-					<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
-					<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
+		<form name="updateForm" role="form" method="post" action="replyDelete">
+			<input type="hidden" name="bno" value="${replyDelete.bno}" readonly="readonly"/>
+			<input type="hidden" id="rno" name="rno" value="${replyDelete.rno}" />
+			<input type="hidden" id="page" name="page" value="${scri.page}"> 
+			<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
+			<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
+			<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
 						
-					<div>
-						<p>삭제 하시겠습니까?</p>
-						<button type="submit" class="delete_btn">예 삭제합니다.</button>
-						<button type="button" class="cancel_btn">아니오. 삭제하지 않습니다.</button>
-					</div>
-				</form>
-			</section>
+			<div>
+				<p>삭제 하시겠습니까?</p>
+				<button type="submit" class="delete_btn">예 삭제합니다.</button>
+				<button type="button" class="cancel_btn">아니오. 삭제하지 않습니다.</button>
+			</div>
+		</form>
+	</section>
 
 
 </body>

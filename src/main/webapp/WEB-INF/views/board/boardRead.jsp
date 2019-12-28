@@ -16,35 +16,8 @@
 		$(document).ready(function(){
 			var formObj = $("form[name='readForm']");
 			
-			// 수정 
-			$(".update_btn").on("click", function(){
-				formObj.attr("action", "/page/board/updateView");
-				formObj.attr("method", "get");
-				formObj.submit();				
-			})
-			
-			// 삭제
-			$(".delete_btn").on("click", function(){
-				
-				var deleteYN = confirm("삭제하시겠습니까?");
-				if(deleteYN == true){
-					
-				formObj.attr("action", "/page/board/delete");
-				formObj.attr("method", "post");
-				formObj.submit();
-					
-				}
-			})
-			
-			// 목록
-			$(".list_btn").on("click", function(){
-				
-				location.href = "/page/board/list?page=${scri.page}"
-						      +"&perPageNum=${scri.perPageNum}"
-						      +"&searchType=${scri.searchType}&keyword=${scri.keyword}";
-			})
 
-			
+			//댓글 쓰기
 			$(".replyWriteBtn").on("click", function(){
 				var formObj = $("form[name='replyForm']");
 				formObj.attr("action", "replyWrite");
@@ -53,7 +26,7 @@
 			
 			//댓글 수정 View
 			$(".replyUpdateBtn").on("click", function(){
-				location.href = "/page/board/replyUpdateView?bno=${read.bno}"
+				location.href = "replyUpdateView?bno=${data.bno}"
 								+ "&page=${scri.page}"
 								+ "&perPageNum=${scri.perPageNum}"
 								+ "&searchType=${scri.searchType}"
@@ -63,7 +36,7 @@
 			
 			//댓글 삭제 View
 			$(".replyDeleteBtn").on("click", function(){
-				location.href = "/page/board/replyDeleteView?bno=${read.bno}"
+				location.href = "replyDeleteView?bno=${data.bno}"
 					+ "&page=${scri.page}"
 					+ "&perPageNum=${scri.perPageNum}"
 					+ "&searchType=${scri.searchType}"
@@ -111,12 +84,10 @@
         			</p>
         			<p>${replyList.content}</p>
         			
-        			<c:if test="${member.memId == replay.writer}">
         				<div>
   							<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
   							<button type="button" class="replyDeleteBtn" data-rno="${replyList.rno}">삭제</button>
 						</div>
-					</c:if>
       			</li>
     		</c:forEach>   
 	</div>

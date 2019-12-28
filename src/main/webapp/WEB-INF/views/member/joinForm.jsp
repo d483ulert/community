@@ -52,7 +52,7 @@
 			<button class="btn" type="submit">회원가입</button>
 			<button class="btn" type="reset">취소</button>
 		</div>
-</form:form>
+	</form:form>
 
 </body>
 </html>
